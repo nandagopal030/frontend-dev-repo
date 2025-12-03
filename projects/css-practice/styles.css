@@ -1,0 +1,103 @@
+*{
+    text-align: center;
+    /* background-color: beige; */
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTT-SkAHJVejUskskpt4aaR_uRkujlvOdyNQ&s");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+table th td{
+    border: 2px solid rgb(255, 0, 0);
+    border-collapse: collapse;
+}
+/* body{
+    background-color: rgb(168, 214, 255);
+} */
+h1{
+    color: white;
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
+}
+p{
+    color: red;
+    font-size: 30px;
+}
+p {
+  border-top-style: dotted;
+  border-right-style: solid;
+  border-bottom-style: dotted;
+  border-left-style: solid;
+}
+p.center{
+    color: rgb(255, 0, 200);
+    text-align: center;
+}
+p.large{
+    font-size: 200px;
+}
+
+.h3b{
+    border: 6px solid  red;
+    border-radius: 20px;
+}
+p.marginp{
+    margin: 205px 30px 50px 100px
+}
+div.margindiv{
+    margin:auto;
+    width: 300px;
+    border: 2px solid green;
+}
+.paddingdiv{
+    padding: 20px;
+    border: 10px solid green;
+}
+div.checkup{
+    height: 300px;
+    width: 50%;
+    background-color: aqua;
+    border-radius: 20px;
+}
+
+div.container{
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+}
+.container div{
+     margin: 10px;
+  padding: 20px;
+  font-size: 24px;
+  border: 2px solid green;
+}
+
+.parent-container{
+    display: flex;
+    background-color: bisque;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: center;
+    height: 400px;
+}
+
+.parent-container div{
+    padding: 10px;
+    margin: 10px;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: aliceblue;
+    row-gap: 100px;
+}
+.grid-container div {
+    padding: 30px;
+    border: 4px solid blue;
+    background-color: black;
+}
+.item1{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
