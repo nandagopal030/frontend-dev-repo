@@ -1,0 +1,42 @@
+.navbar-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.nav-links a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: rgb(177, 177, 177);
+}
+
+.nav-links>a:hover {
+    color: black;
+    cursor: pointer;
+    border-bottom: 1px solid hsl(136, 64%, 51%);
+}
+
+.digitalbank-logo {
+    margin-left: 80px;
+}
+
+.req-invite-btn {
+    margin-right: 80px;
+}
+
+.req-invite-btn>button {
+    border-radius: 20px;
+    padding: 8px;
+    width: 130px;
+    border: 1px solid white;
+    color: white;
+    background-color: hsl(136, 64%, 51%);
+    cursor: pointer;
+}
+
+.req-invite-btn>button:hover {
+    background-color: hsl(136, 100%, 21%);
+
+}
