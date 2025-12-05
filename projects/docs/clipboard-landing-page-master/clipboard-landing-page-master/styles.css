@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    font-family: "Bai Jamjuree", sans-serif;
+}
+
+p {
+    color: #ababb2;
+}
+
+h2 {
+    color: #4c545d;
+}
+
+h3 {
+    color: #4c545d;
+}
+
+.section-1 {
+    padding-bottom: 150px;
+    position: static;
+}
+
+.background-img>img {
+    position: relative;
+    width: 100%;
+}
+
+.header-content {
+    position: absolute;
+    top: 23%;
+    left: 31%;
+    text-align: center;
+}
+
+.header-content>h1 {
+    margin-top: 20px;
+    color: #4c545d;
+    font-size: 30px;
+}
+
+.header-content>p {
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1em;
+}
+
+.btn-1>button {
+    padding: 22px;
+    border: none;
+    border-radius: 24px;
+    color: white;
+    background: #26ba9c;
+    font-size: 17px;
+    cursor: pointer;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.btn-1>button:hover {
+    background-color: #48d6ba;
+}
+
+.alt-btn>button {
+    background-color: #6173ff;
+}
+
+.alt-btn>button:hover {
+    background-color: #7a89f8;
+}
+
+
+
+.gallary-section {}
+
+
+.img-container {
+    display: flex;
+    height: 40em;
+    justify-content: space-around;
+}
+
+.img-content {
+    text-align: justify;
+    padding: 25px;
+    position: relative;
+    left: 8em;
+    top: 12em;
+}
+
+.computer-img>img {
+    position: absolute;
+    z-index: -1;
+    width: 57em;
+    right: 30em;
+}
+
+.img-content h3 {
+
+    margin-bottom: 13px;
+}
+
+.quick-para p {
+    text-align: justify;
+    color: #ababb2;
+    font-size: 14px;
+    width: 11em;
+}
+
+.insight-content {
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+.insight-content>p {
+    padding-top: 25px;
+}
+
+.tablet-mobile {
+    display: flex;
+    justify-content: center;
+}
+
+.list-item-container {
+    display: flex;
+    justify-content: center;
+}
+
+.list-item>p {
+    padding: 27px;
+    text-align: center;
+}
+
+.list-item>h3 {
+
+    text-align: center;
+}
+
+.img-div {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.clip-container {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.clip-container>p {
+    padding: 20px
+}
+
+.clip-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.clip-btn-1 {
+    padding-left: 30px;
+}
+
+.clip-btn-1>button {
+    padding: 22px;
+    border: none;
+    border-radius: 24px;
+    color: white;
+    background: #26ba9c;
+    font-size: 17px;
+    cursor: pointer;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.clip-btn-2>button {
+    background-color: #6173ff;
+}
+
+.footer-parent {
+    background: #e7eaec;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5%;
+}
+
+.social-links>img {
+    padding: 10%;
+    cursor: pointer;
+}
+
+.logo>img {
+    height: 3em;
+}
+
+.list-items>a {
+    cursor: pointer;
+    display: grid;
+    text-decoration: none;
+    color: #5b646a;
+    padding: 10px;
+}
+
+.marquee>img {
+    padding: 80px;
+}
