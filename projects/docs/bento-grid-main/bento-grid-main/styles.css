@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(245, 245, 245, 1);
+    font-family: "DM Sans", sans-serif;
+}
+
+.create-write-container {
+    padding: 5em;
+    margin: 3em;
+}
+
+h1,
+h2 {
+    margin: 0;
+    font-weight: bolder;
+}
+
+.quick-text {
+    color: rgb(131, 98, 219, 1);
+    font-weight: 600;
+}
+
+.create-post-btn>img {
+    height: 4em;
+    margin-top: 15px;
+    width: 8em;
+}
+
+.create-container {
+    background-color: rgb(250, 238, 226, 1);
+    width: 11em;
+    height: 18em;
+    text-align: left;
+    border-radius: 10px;
+    padding: 2em;
+}
