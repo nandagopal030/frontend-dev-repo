@@ -26,9 +26,11 @@ h2 {
 }
 
 .create-container {
+    display: grid;
+    grid-template-rows: auto;
     background-color: rgb(250, 238, 226, 1);
     width: 11em;
-    height: 18em;
+    height: 13em;
     text-align: left;
     border-radius: 10px;
     padding: 2em;
