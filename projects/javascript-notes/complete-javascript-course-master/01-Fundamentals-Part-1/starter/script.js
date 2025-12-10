@@ -62,7 +62,6 @@ console.log(typeof year); //this gives an output as an number
 
 console.log(typeof null); //this gives an output as object
 
-*/
 
 // let const var
 // keyword ->  It is a reserved word like if for while new
@@ -87,3 +86,39 @@ console.log(job);  // no errror will be thrown
 //javascript will not throws any error but still its a bad practice to write a code like this what javascript actuall do while we assign something is it will create a property in the global 
 lastName = 'kannan';
 console.log(lastName);
+
+// Basic Operators  ( - , / , ** , + )
+//Math Operators
+const now = 2025;
+const ageNanda = now - 1991;
+const ageSofi = now - 1980;
+
+console.log(ageNanda, ageSofi);
+console.log(ageNanda * 2, ageNanda / 2, 2 ** 3);
+
+// String concatenation
+const firstName = 'sporty';
+const lastName = "Reymesterio";
+console.log(firstName + ' ' + lastName);
+
+//Assignment operators
+let a = 5 + 10;
+a += 10;
+a *= 5;
+a++;
+a--;
+a--;
+console.log(a);
+
+//Comparison Operators
+// ( > , < , >= , <= , == , != , ===  )
+const nandaAge = 22;
+const hariAge = 27;
+console.log(nandaAge > hariAge);
+console.log(nandaAge <= hariAge);
+const additonOfAges = nandaAge + hariAge;
+console.log(additonOfAges >= 30);
+
+
+
+*/
