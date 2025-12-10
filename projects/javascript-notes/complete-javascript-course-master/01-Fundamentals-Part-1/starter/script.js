@@ -74,7 +74,7 @@ age = 31;     //This is called mutation where while we use let the variabel can 
 console.log(age);
 
 // const
-//Always make sure to use const if there is no change to be made in the further code for the paritcular variable assignment  
+//Always make sure to use const if there is no change to be made in the further code for the paritcular variable assignment
 const birthYear = 1919;  // where const is immutable if it is declared once it cannot be redeclared
 // birthYear = 1920 causes a Typeerror in the console
 
@@ -83,7 +83,7 @@ var job = 'coder';          //(Functional level scope)
 job = 'high level designer';
 console.log(job);  // no errror will be thrown
 
-//javascript will not throws any error but still its a bad practice to write a code like this what javascript actuall do while we assign something is it will create a property in the global 
+//javascript will not throws any error but still its a bad practice to write a code like this what javascript actuall do while we assign something is it will create a property in the global
 lastName = 'kannan';
 console.log(lastName);
 
@@ -116,9 +116,32 @@ const nandaAge = 22;
 const hariAge = 27;
 console.log(nandaAge > hariAge);
 console.log(nandaAge <= hariAge);
+
+console.log(now - nandaAge  > now - hariAge)   // At this comparison the javascript first does the operation in an specific order precedance first is now - nandaAge   and  afterwards now -hariAge and then it checks up the comparison
+
 const additonOfAges = nandaAge + hariAge;
 console.log(additonOfAges >= 30);
 
 
 
 */
+
+// Operator precedence
+
+const now = 2025;
+const ageBandu = now - 1922;
+const ageVandu = now - 1933;
+// - (minus) has larger precedence than the > (greater than symbol)
+console.log(now - ageBandu > now - ageVandu);
+
+let x, y;
+console.log(x = y = 25 - 10 - 5);
+console.log(x, y)
+
+//AVG
+
+let averageAge = ageBandu + ageVandu / 2   // first it divides and next it adds (makes no sense)
+console.log(averageAge)
+let averageAge2 = (ageBandu + ageVandu) / 2   // first it adds due to () and next it divies (makes sense)
+console.log(averageAge2)
+
