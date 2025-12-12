@@ -124,7 +124,6 @@ console.log(additonOfAges >= 30);
 
 
 
-*/
 
 // Operator precedence
 
@@ -145,3 +144,87 @@ console.log(averageAge)
 let averageAge2 = (ageBandu + ageVandu) / 2   // first it adds due to () and next it divies (makes sense)
 console.log(averageAge2)
 
+//BMI = mass / (height  *  height )
+
+//challange-1 calculate the BMI
+
+let massMark = 78;
+let heightMark = 1.6;
+let massJohn = 92;
+let heightJohn = 1.95;
+
+const BMIMark = massMark / (heightMark * heightMark);
+const BMIJohn = massJohn / (heightJohn * heightJohn);
+
+console.log(BMIMark);
+console.log(BMIJohn);
+
+let markHigherBMI = BMIMark > BMIJohn;
+console.log(markHigherBMI);
+
+
+
+// String and Template literals
+
+const firstName = "Nanda";
+const job = "Developer";
+const birthYear = 1981;
+const year = 2025;
+
+//normal String
+console.log("Hii i'am " + firstName + "and my age is " + (year - birthYear) + " , " + job + "!");
+
+//Template literals ( `` )
+console.log(`Hii i am ${firstName} and my age is ${year - birthYear} , ${job}!`);
+
+//String with multiline using template literals
+console.log(`String \n\
+    with \n\
+    multilne `)
+
+//\n\ is basically used for next line
+console.log(`String
+    with
+    multiline`)
+
+    // Taking Decisions if/else Statements
+    //This struture is called the controlled structure
+    const age = 15;
+
+    if (age > 18) {
+        console.log(`sarah you are ready for your driving liscense 😁`);
+    } else {
+        const yearsLeft = 18 - age;
+    console.log(`Sorry sarah you still need ${yearsLeft} years to get your license 😒`)
+}
+
+let year = 1998;
+let century;
+if (century <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+console.log(century);
+
+
+//BMI With John and mark
+const massMark = 78;
+const heightMark = 1.69;
+const massJohn = 92;
+const heightJohn = 1.95;
+
+const BMIMark = massMark / (heightMark * heightMark);
+const BMIJohn = massJohn / (heightJohn * heightJohn);
+console.log(BMIMark, BMIJohn);
+
+if (BMIMark > BMIJohn) {
+    console.log(`Mark's BMI ${BMIMark} is higher than John's ${BMIJohn}`);
+} else {
+    console.log(` John's BMI ${BMIJohn} is higher than ${BMIMark}`)
+}
+
+*/
+
+//Type converison and coercion
+// Type conversion is we are manually converting type from one type to another by adding the certain type and type coercion is javascript will automatically convert it.
