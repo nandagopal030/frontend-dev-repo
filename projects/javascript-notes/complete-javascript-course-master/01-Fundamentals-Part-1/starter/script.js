@@ -224,7 +224,120 @@ if (BMIMark > BMIJohn) {
     console.log(` John's BMI ${BMIJohn} is higher than ${BMIMark}`)
 }
 
-*/
 
 //Type converison and coercion
 // Type conversion is we are manually converting type from one type to another by adding the certain type and type coercion is javascript will automatically convert it.
+
+
+//Type converision (Manually)
+let year = "1991";
+console.log(year + 11);   //without type conversion
+console.log(Number(year) + 11); //output 2002 with type coercion
+
+let word = "nanda";
+console.log(Number(word));  // NaN error (Not a Number error)
+console.log(typeof NaN);    // Numbertype
+
+//js can convert only 2 to 3 types we can convert it through a number , string and boolean we cannot convert to undefined and null
+
+//Type coercion      (+  converts everything to a string and ( - , / , %) converts everything to a number)
+console.log("I am " + 22 + " Years old");  //This is exactly type coerction where when the + operator is being used in between the Strings means js will automatically convert the number into string
+console.log('23' - '10 ' - 3);  //10  now this time js converts the string to a number and applies the coercion
+
+console.log('23' + '10' + 10);   //231010  now this is the plot twist when we use the + operator js converts the number to string
+console.log('23' * 2);  // 46 now 46 appears because if * operator and this is called the type coercion
+
+console.log('10' + '1' - 2 + '11');   // output 9911
+console.log(10 - 1 - 5 - 2 + '10');  // output  210
+
+
+//Implicit and explicit conversion
+//Implicit conversion (or coercion) is when a programming language automatically changes a data type (like int to float) without programmer action, usually for safe operations like adding smaller to larger types; explicit conversion (or casting) is when the programmer manually forces a type change using syntax like (int)value
+
+//Javascript falsy values  ->  ( 0 , undefined , ' ', null, NaN )
+console.log(Boolean(0));  //false
+console.log(Boolean('nanda'));  //true
+console.log(Boolean(' '));  //true
+console.log(Boolean(NaN));  //false
+console.log(Boolean({}));  //true
+
+
+const money = 0;   //0 is a falsy value in boolean it returns false
+
+if (money) {
+    console.log("Don't spend it all");
+} else {
+    console.log("Get some money my friend");
+}
+
+//let height = 0;   //even though a 0 value is being defined it gives UNDEFINED Height as an output
+let height;  // now it is actually undefined
+
+if (height) {
+    console.log("Height is being DEFINED");
+} else {
+    console.log("UNDEFINED Height");
+}
+
+
+// Equality operators   ==  and  ===
+// assignment is the = and comparison operator is ===
+let age = 18;
+if (age === 18) console.log("Congrats you are offically an adult");
+else console.log("You are too young to go to the gym");
+
+//Double ( == ) equal does the type coercion whereas a triple equal does not gives any type coercion ( === )
+
+//  ===   this is called strict equal to it does not convert it into type coercion it only returns the true if both the values are exactly same
+//  ==    this is called the loose equal to where it convert both the values to a single datatype it is in the mixture if string and numbers
+
+a = 18;
+b = 18;
+if (a === 18) {
+    console.log("Values to be true");
+} else {
+    console.log("Values to be false");
+}
+
+//example
+const myAge = '18';
+if (18 == myAge) console.log("loose is being consoled becz of age")    //loose will get printed
+if (18 === myAge) console.log("Strict is being consoled becz of age");
+
+
+//strict and loose examples 
+//aviod the loose operator and always use the strict operator for comparison
+18 === 18
+true
+18 === 19
+false
+18 == 19
+false
+'18' == 18
+true
+
+
+//example code 
+
+const favourate = Number(prompt("Enter your favourate number"));   //type conversion happening here  if WE DONT add the type conversion in this specific  line it will be converted to string
+console.log(favourate);
+console.log(typeof favourate);    // In this console it is a string
+
+if (favourate === 23) {      // it will print because of the loose '23' == 23 (Type coercion will happen here); if 23 === 23 ans true 
+    console.log("Cool! 23 its a great number");
+} else if (favourate === 7) {
+    console.log("7 is also a great number")
+} else if (favourate === 9) {
+    console.log("9 is also a great number")
+} else {
+    console.log("no number is great number except 7,9,23");
+}
+
+
+// Different operator  !=  and !==
+// !=    -> loose
+// !==   -> Strict
+if (favourate !== 23) console.log("Why not 23!!");      // By using the strict operator
+
+
+*/
