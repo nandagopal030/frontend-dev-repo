@@ -305,7 +305,7 @@ if (18 == myAge) console.log("loose is being consoled becz of age")    //loose w
 if (18 === myAge) console.log("Strict is being consoled becz of age");
 
 
-//strict and loose examples 
+//strict and loose examples
 //aviod the loose operator and always use the strict operator for comparison
 18 === 18
 true
@@ -317,13 +317,13 @@ false
 true
 
 
-//example code 
+//example code
 
 const favourate = Number(prompt("Enter your favourate number"));   //type conversion happening here  if WE DONT add the type conversion in this specific  line it will be converted to string
 console.log(favourate);
 console.log(typeof favourate);    // In this console it is a string
 
-if (favourate === 23) {      // it will print because of the loose '23' == 23 (Type coercion will happen here); if 23 === 23 ans true 
+if (favourate === 23) {      // it will print because of the loose '23' == 23 (Type coercion will happen here); if 23 === 23 ans true
     console.log("Cool! 23 its a great number");
 } else if (favourate === 7) {
     console.log("7 is also a great number")
@@ -341,3 +341,21 @@ if (favourate !== 23) console.log("Why not 23!!");      // By using the strict o
 
 
 */
+
+//Boolean operations
+//  &&   ||  !
+
+const hasGoodDrivingSkills = true;
+const hasGoodVision = true;
+console.log(hasGoodDrivingSkills && hasGoodVision)
+console.log(hasGoodDrivingSkills || hasGoodVision);
+console.log(!hasGoodDrivingSkills);
+
+if (!hasGoodVision) {
+    console.log("Sorry sarah could not drive");
+} else {
+    console.log("Hurray! sarah can drive");
+}
+if (hasGoodDrivingSkills && hasGoodVision) {
+    console.log("")
+}
