@@ -64,13 +64,13 @@ console.log(typeof null); //this gives an output as object
 
 
 // let const var
-// keyword ->  It is a reserved word like if for while new
+// keyword ->  It is a reserved word like -> if for while new
 // datatype -> It defines the kind of value a variable holds
 // we use let  to redeclare at any point of our code
 
 //let                  (block level scope)
 let age = 30;
-age = 31;     //This is called mutation where while we use let the variabel can be changed(mutable)
+age = 31;     //This is called mutation where while we use let the variable can be changed(mutable)
 console.log(age);
 
 // const
@@ -340,22 +340,29 @@ if (favourate === 23) {      // it will print because of the loose '23' == 23 (T
 if (favourate !== 23) console.log("Why not 23!!");      // By using the strict operator
 
 
-*/
 
 //Boolean operations
 //  &&   ||  !
 
-const hasGoodDrivingSkills = true;
-const hasGoodVision = true;
-console.log(hasGoodDrivingSkills && hasGoodVision)
-console.log(hasGoodDrivingSkills || hasGoodVision);
-console.log(!hasGoodDrivingSkills);
+*/
 
-if (!hasGoodVision) {
-    console.log("Sorry sarah could not drive");
+const hasDrivingLiscense = true;
+const hasGoodVision = true;
+
+console.log(hasDrivingLiscense && hasGoodVision);
+console.log(hasDrivingLiscense || hasGoodVision);
+console.log(!hasGoodVision);
+
+// if (hasDrivingLiscense && hasGoodVision) {
+//     console.log("You can drive your own vehical ");
+// } else {
+//     console.log("I think someoneelse should drive");
+// }
+
+const isTired = false;
+if (hasDrivingLiscense && hasGoodVision && !isTired) {
+    console.log("Gopal can drive his car");
 } else {
-    console.log("Hurray! sarah can drive");
+    console.log("You canno't drive your car");
 }
-if (hasGoodDrivingSkills && hasGoodVision) {
-    console.log("")
-}
+
