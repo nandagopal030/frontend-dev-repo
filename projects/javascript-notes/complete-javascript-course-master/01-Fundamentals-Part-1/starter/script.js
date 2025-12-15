@@ -426,7 +426,25 @@ if (23 > 10) {                                 // This is an Expression
 const ans = '23 is larger than 10';        // Statement usually ends with a semicolon
 }
 const me = 'nanda';
-console.log(`Hello i'm ${2025 - 2003} years older and my name is ${me}`);
+console.log(`Hello i'm ${2025 - 2003} years older and my name is ${me}`);    // This is a Template literals ( ` ` ) where we can  pass the statements inside the ${} but byuisng the Ternary operator an expression can be used inside of it
 
+
+// The conditional operator or Ternary Operator
+
+const age = 78;
+age > 18 ? console.log("I like to drink Wine 🍷") : console.log("I would like to drink water 🚰");  // This is a expresssion which returns a value and a statement will always end with a semicolon without returning any value
+
+const drink = age >= 18 ? 'Wine 🍷' : 'water 🚰';
+console.log(drink);
+
+let drink2 = age;
+if (age > 18) {
+    console.log("Wine ....");
+} else {
+    console.log("waterrr ....");
+}
+
+const output = drink2 >= 18 ? `Your age is ${age > 18 ? '18 and you can drink wine' : 'You can drink whatever u want'} ` : 'AGe permission Denied ❌';    // using ternary operators inside the template literals (By using this way we can define an expression inside a statement) 
+console.log(output); 
 
 */
