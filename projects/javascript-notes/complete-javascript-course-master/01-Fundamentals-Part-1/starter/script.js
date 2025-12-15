@@ -357,7 +357,7 @@ console.log(!hasGoodVision);
     // } else {
         //     console.log("I think someoneelse should drive");
         // }
-        
+
         const isTired = false;
 if (hasDrivingLiscense && hasGoodVision && !isTired) {
     console.log("Gopal can drive his car");
@@ -393,7 +393,7 @@ switch (day) {
         default:
             console.log("Not a valid day");
         }
-        
+
 // Challenge do the same thing using the if or else statement
 
 if (day == 'monday') {
@@ -410,4 +410,23 @@ if (day == 'monday') {
 } else {
     console.log("Not a valid day");
 }
+
+
+// An expressions are the word that makes up the sentances    ->  3 + 4
+// An declarations are the complete sentances
+
+// if else  switch -> statement
+
+//expressions
+3 + 6;
+9191;
+true && false && !true;
+
+if (23 > 10) {                                 // This is an Expression
+const ans = '23 is larger than 10';        // Statement usually ends with a semicolon
+}
+const me = 'nanda';
+console.log(`Hello i'm ${2025 - 2003} years older and my name is ${me}`);
+
+
 */
