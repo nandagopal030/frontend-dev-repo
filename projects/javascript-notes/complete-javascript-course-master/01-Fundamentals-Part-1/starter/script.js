@@ -344,7 +344,6 @@ if (favourate !== 23) console.log("Why not 23!!");      // By using the strict o
 //Boolean operations
 //  &&   ||  !
 
-*/
 
 const hasDrivingLiscense = true;
 const hasGoodVision = true;
@@ -354,15 +353,61 @@ console.log(hasDrivingLiscense || hasGoodVision);
 console.log(!hasGoodVision);
 
 // if (hasDrivingLiscense && hasGoodVision) {
-//     console.log("You can drive your own vehical ");
-// } else {
-//     console.log("I think someoneelse should drive");
-// }
-
-const isTired = false;
+    //     console.log("You can drive your own vehical ");
+    // } else {
+        //     console.log("I think someoneelse should drive");
+        // }
+        
+        const isTired = false;
 if (hasDrivingLiscense && hasGoodVision && !isTired) {
     console.log("Gopal can drive his car");
 } else {
     console.log("You canno't drive your car");
 }
 
+
+
+// Switch Statements  (easier to understand)
+
+const day = 'monday'
+
+switch (day) {
+    case 'monday':
+        console.log("Record videos");
+        console.log("Do some coding");
+        break;
+    case 'tuesday':
+        case 'wednesday':
+            console.log("Week middle so work so harder");
+        break;
+        case 'thursday':
+        console.log("Bunjee jumping");
+        break;
+        case 'friday':
+            console.log("weekened gonna start");
+            break;
+    case 'saturday':
+        case 'sunday':
+        console.log("Whooo ! enjoy the weekened");
+        break;
+        default:
+            console.log("Not a valid day");
+        }
+        
+// Challenge do the same thing using the if or else statement
+
+if (day == 'monday') {
+    console.log("Record videos");
+    console.log("Do some coding");
+} else if (day == 'tuesday' || day == 'wednesday') {
+    console.log("Week middle so work so harder");
+} else if (day == 'thursday') {
+    console.log("Bunjee jumping");
+} else if (day == 'friday') {
+    console.log("weekend gonna start");
+} else if (day == 'saturday' || day == 'sunday') {
+    console.log("Whoo ! enjoy the weekend");
+} else {
+    console.log("Not a valid day");
+}
+*/
