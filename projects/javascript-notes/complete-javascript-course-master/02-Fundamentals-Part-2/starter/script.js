@@ -93,3 +93,16 @@ console.log(retiermentYear(1991, 'nanda'));
 console.log(retiermentYear(1981, 'Bob'));
 
 */
+
+// Functions calling other Functions 
+const cutPieces = function (fruit) {
+    return fruit * 2;
+}
+
+function fruitProcessor(apple, banana) {
+    const slicedApple = cutPieces(apple);
+    const slicedBanana = cutPieces(banana);
+    const juice = `This man got ${apple} apples which was being sliced into ${slicedApple} pieces, and got ${banana} bananas with ${slicedBanana} pieces`;
+    return juice;
+}
+console.log(fruitProcessor(3, 4));
