@@ -52,22 +52,44 @@ const birth1 = age(1991);
 console.log(birth1);
 
 
-/* Function Expression
- The function expression is also known as a anonymous function (Function Expression) which does not have a function name
- A function is just a value we can just store it on a variable
-*/
+// Function Expression
+//  The function expression is also known as a anonymous function (Function Expression) which does not have a function name
+//  A function is just a value we can just store it on a variable
+
 const calcAge2 = function (birthYear) {     // function expression
     return 2025 - birthYear;                // function expression
 }
 const birth2 = calcAge2(1991);
 console.log(birth1, birth2);
-/*
- The main difference between the function declaration and the function expression is
- In the Function declaration we can call the function before declaring it but 
- In the Function Expression we cannot call the function before calling it (Error will be thrown)
-*/
+
+//  The main difference between the function declaration and the function expression is
+//  In the Function declaration we can call the function before declaring it but 
+//  In the Function Expression we cannot call the function before calling it (Error will be thrown)
+
+
 
 //Arrow Functions
 
+// Function Expression
+const calcAge3 = function (birthYear) {
+    return birthYear - 2024;
+}
+
+//The Arrow Function expression finishes in single line and  the return will happen here implicitely ( where we dont have to define any return type ) ( we can also add more parameter and more line of codes )
+
+const age3 = birthYear => 2024 - birthYear;
+
+console.log(age3);
+
+
+// Arrow function with More than 1 parameter we need to use the bracket 
+// Arrow function do not have this keyword
+const retiermentYear = (birthYear, firstName) => {
+    const age = 2025 - birthYear;
+    const retier = 65 - age;
+    return `${firstName} retiers in ${retier} Years`;
+}
+console.log(retiermentYear(1991, 'nanda'));
+console.log(retiermentYear(1981, 'Bob'));
 
 */
