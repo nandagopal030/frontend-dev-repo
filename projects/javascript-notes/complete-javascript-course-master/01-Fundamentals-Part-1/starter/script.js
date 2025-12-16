@@ -447,4 +447,4 @@ if (age > 18) {
 const output = drink2 >= 18 ? `Your age is ${age > 18 ? '18 and you can drink wine' : 'You can drink whatever u want'} ` : 'AGe permission Denied ❌';    // using ternary operators inside the template literals (By using this way we can define an expression inside a statement) 
 console.log(output); 
 
-*/
+*/ 
