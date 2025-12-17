@@ -43,7 +43,7 @@ console.log(num);
 
 // Function Declarations and Expressions
 
-//Function Declarations 
+//Function Declarations
 
 function age(birthYear) {
     return 2025 - birthYear;
@@ -63,7 +63,7 @@ const birth2 = calcAge2(1991);
 console.log(birth1, birth2);
 
 //  The main difference between the function declaration and the function expression is
-//  In the Function declaration we can call the function before declaring it but 
+//  In the Function declaration we can call the function before declaring it but
 //  In the Function Expression we cannot call the function before calling it (Error will be thrown)
 
 
@@ -82,7 +82,7 @@ const age3 = birthYear => 2024 - birthYear;
 console.log(age3);
 
 
-// Arrow function with More than 1 parameter we need to use the bracket 
+// Arrow function with More than 1 parameter we need to use the bracket
 // Arrow function do not have this keyword
 const retiermentYear = (birthYear, firstName) => {
     const age = 2025 - birthYear;
@@ -92,9 +92,8 @@ const retiermentYear = (birthYear, firstName) => {
 console.log(retiermentYear(1991, 'nanda'));
 console.log(retiermentYear(1981, 'Bob'));
 
-*/
 
-// Functions calling other Functions 
+// Functions calling other Functions
 const cutPieces = function (fruit) {
     return fruit * 2;
 }
@@ -106,3 +105,54 @@ function fruitProcessor(apple, banana) {
     return juice;
 }
 console.log(fruitProcessor(3, 4));
+
+//Reviewing the Functions (lessons)
+//A Function calling another Function
+
+const calcAge = function (birthYear) {
+    return 2025 - birthYear;
+}
+
+const calcRetierment = function (birthYear) {
+    console.log(`My birthYear is ${birthYear}`);
+    const age = calcAge(birthYear);
+    const retier = 64 - age;
+    console.log(`My Retierment is at ${retier}`);
+    if (retier < 0) {
+        return -1;                             // when we use the return statement it will immedietly break the function and returns the value 
+    } else {
+        return retier;
+    }
+}
+console.log(calcRetierment(1911));
+
+
+
+//Find the Average score of 2 teams and return the team which has the double the value of another team if no team attains the requirement return no team wins   
+
+const calcAverage = (sc1, sc2, sc3) => {
+    const avg = (sc1 + sc2 + sc3) / 3;
+    return avg;
+}
+const scoreDolphins = calcAverage(44, 23, 71);
+const scoreKoalas = calcAverage(65, 54, 49);
+
+
+const checkWinner = (avgDolphins, avgKoalas) => {
+    if (avgDolphins >= 2 * avgKoalas) {
+        return `Dolphins win (${avgDolphins} vs ${avgKoalas})`;
+    } else if (avgKoalas >= 2 * avgDolphins) {
+        return `Koalas win (${avgKoalas} vs ${avgDolphins})`;
+    } else {
+        return `No team wins...`;
+    }
+}
+console.log(checkWinner(scoreDolphins, scoreKoalas));
+// console.log(checkWinner(300,10));
+
+const a1 = 10;
+const a2 = 10;
+const b1 = 22;
+const b2 = 22; 
+
+*/
