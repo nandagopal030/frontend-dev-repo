@@ -183,7 +183,7 @@ console.log(friends);
 //    at script.js:183:9
 // friends = ['Randy', 'kaber'];
 
-//Array with multiple data type values 
+//Array with multiple data type values
 const firstName = 'frankestain';
 const personalInfo = [firstName, 2025 - 1991, 'teacher', friends];
 console.log(personalInfo);
@@ -209,7 +209,7 @@ const friends = ['mary', 'spiderman', 'deadpool'];
 console.log(friends);
 const newFriends = friends.push('john');    //Push is a funciton which pushes the data into the array at the end of it.
 
-console.log(friends); // 'john' was being added at the beginning 
+console.log(friends); // 'john' was being added at the beginning
 console.log(newFriends);  //when i console.log(newFriends) it will immedieatly return the length of the particular array, It is one of the method to find the length
 
 // Add
@@ -239,6 +239,23 @@ console.log(friends.includes('nanoman'));
 if (friends.includes('spiderman')) {
     console.log("Ypu have a friend names spidyyy");
 }
-    
+===================================================================================================================================================
 
+
+===================================================================================================================================================
 */
+// Objects in Javascript  -> fundamental concepts in JS
+// nanda is an object and it has the key value pair which is key : value  and the key is also known as the properties of the object
+// This syntax means object literal syntax
+// In objects the order of the element is not more important for reteriving purpose but in Array the order of the element is very important.
+//objects more unstructured data
+
+const nanda = {
+    firstName: 'nandha',
+    lastName: 'gopal',
+    age: 2025 - 2003,
+    designation: 'teacher',
+    friends: ['hari', 'bisop', 'soldier']
+}
+
+// reterive data in an object
