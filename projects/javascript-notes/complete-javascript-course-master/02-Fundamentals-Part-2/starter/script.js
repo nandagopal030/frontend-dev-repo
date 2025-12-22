@@ -251,11 +251,43 @@ if (friends.includes('spiderman')) {
 //objects more unstructured data
 
 const nanda = {
-    firstName: 'nandha',
+    firstName: 'Randyortan',
     lastName: 'gopal',
     age: 2025 - 2003,
-    designation: 'teacher',
+    job: 'teacher',
     friends: ['hari', 'bisop', 'soldier']
 }
 
+console.log(nanda);
 // reterive data in an object
+// Dot ( . ) notation vs Bracket notation ( [] ) when to use and where to use
+
+//when directly accesing the Objects properties it is important to use . notation
+console.log(nanda.firstName);
+console.log(nanda.lastName);
+
+// when we concatinate and use the object properites , it is very important to use bracket notation
+const conc = 'Name';
+console.log(nanda['first' + conc]);
+console.log(nanda['last' + conc]);
+
+const findField = ("What do you want to know about nanda -> firstName, lastName, age, job, friends");
+
+//console.log(nanda.findField);     // Throws an undefined output because js cannot find outthe findField inside the objects properties so it searches for findField and there is no raw findField so it returns undefined
+
+//Instead use the bracket operator
+
+if (nanda[findField]) {
+    console.log(nanda[findField]);
+} else {
+    console.log(`wrong value ${nanda[findField]} , Instead  you want to know about nanda -> firstName, lastName, age, job, friends`);
+}
+
+nanda.twitter = 'bambade';
+nanda.insta = 'loosucutie';
+
+console.log(nanda);
+const nandaFriends = prompt("Enter nanda's 3 friends");
+if (nanda[nandaFriends]) {
+    console.log(`${nanda.firstName}, has ${nanda.friends.length} frineds and his best friend is ${nanda.friends[0]}`);
+}
