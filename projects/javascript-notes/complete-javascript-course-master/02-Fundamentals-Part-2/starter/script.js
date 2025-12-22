@@ -243,7 +243,6 @@ if (friends.includes('spiderman')) {
 
 
 ===================================================================================================================================================
-*/
 // Objects in Javascript  -> fundamental concepts in JS
 // nanda is an object and it has the key value pair which is key : value  and the key is also known as the properties of the object
 // This syntax means object literal syntax
@@ -291,3 +290,54 @@ const nandaFriends = prompt("Enter nanda's 3 friends");
 if (nanda[nandaFriends]) {
     console.log(`${nanda.firstName}, has ${nanda.friends.length} frineds and his best friend is ${nanda.friends[0]}`);
 }
+
+*/
+
+//objects methods
+
+//Any function that is attached to an object is called a method
+// Javascript objects can contain mixed datatypes in any order and even it can also contain the funcitons
+
+const nanda = {
+    firstName: 'Randyortan',
+    lastName: 'gopal',   //string
+    age: 2025 - 2003,    // expression in numbers
+    job: 'teacher',
+    birthYear: 1991,
+    friends: ['hari', 'bisop', 'soldier'],  // Array
+    hasDriversLicense: false,    // Boolean
+
+    //expression
+    // calcAge: function (birthYear) {   // Functions
+    //     return 2020 - birthYear;
+    // }
+
+    // using this 
+    // calcAge: function () {
+    //     console.log(this);
+    //     return 2020 - this.birthYear;
+    // }
+
+    // We can update the age inside the object using this
+    calcAge: function () {
+        this.age = 2037 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function () {
+        return `${this.firstName} is a ${this.calcAge()} year old ${this.job} and he ${this.hasDriversLicense ? 'a' : "No"} driving license `;
+    }
+}
+
+//without using this keyword
+//console.log(nanda.calcAge(1991));    // Accessing the js objects functions using the DOt ( . ) Operator
+//console.log(nanda['calcAge'](1991)); // Accessing the js objects functions using the Bracket [] operator
+
+//with using this keyword
+// console.log(nanda.calcAge());
+
+//Age
+console.log(nanda.age);
+console.log(nanda.age);
+console.log(nanda.getSummary());
+
