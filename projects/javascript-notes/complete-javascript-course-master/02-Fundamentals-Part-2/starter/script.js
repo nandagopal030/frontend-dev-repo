@@ -119,7 +119,7 @@ const calcRetierment = function (birthYear) {
     const retier = 64 - age;
     console.log(`My Retierment is at ${retier}`);
     if (retier < 0) {
-        return -1;                             // when we use the return statement it will immedietly break the function and returns the value 
+        return -1;                             // when we use the return statement it will immedietly break the function and returns the value
     } else {
         return retier;
     }
@@ -128,7 +128,7 @@ console.log(calcRetierment(1911));
 
 
 
-//Find the Average score of 2 teams and return the team which has the double the value of another team if no team attains the requirement return no team wins   
+//Find the Average score of 2 teams and return the team which has the double the value of another team if no team attains the requirement return no team wins
 
 const calcAverage = (sc1, sc2, sc3) => {
     const avg = (sc1 + sc2 + sc3) / 3;
@@ -153,6 +153,53 @@ console.log(checkWinner(scoreDolphins, scoreKoalas));
 const a1 = 10;
 const a2 = 10;
 const b1 = 22;
-const b2 = 22; 
+const b2 = 22;
 
 */
+
+//============================================================================================================================================
+// Arrays
+// An Arrays is a big container we can throw variables and later we can reference them, Arrays are mutable
+
+// ways to create an array
+const friend1 = 'michal';
+const friend2 = 'romeo';
+const friend3 = 'kathara';
+
+const friends = ['michal', 'romeo', 'kathara'];
+console.log(friends);
+
+const years = new Array(1991, 2002, 2003);   // new is a keyword and Array is Function
+console.log(years);
+
+console.log(friends.length);
+console.log(friends[2]);
+
+console.log(friends[friends.length - 1]);   //inside the friends[]   This ( [] ) bracket we can also use expressions like this
+friends[2] = 'jay';
+console.log(friends);
+
+//A full array cannot be mutated like this in the format
+// Uncaught TypeError: Assignment to constant variable.
+//    at script.js:183:9
+// friends = ['Randy', 'kaber'];
+
+//Array with multiple data type values 
+const firstName = 'frankestain';
+const personalInfo = [firstName, 2025 - 1991, 'teacher', friends];
+console.log(personalInfo);
+
+const calcAge = function (birthYear) {
+    return 2025 - birthYear;
+}
+const birthYears = [1911, 1902, 1903, 1989, 1969];
+
+const age1 = calcAge(birthYears[0]);
+const age2 = calcAge(birthYears[1]);
+const age3 = calcAge(birthYears[2]);
+
+console.log(age1, age2, age3);
+
+// We can also add functions inside the array because in javascript expressions can be added inside the array
+const ages = [calcAge(birthYears[0]), calcAge(birthYears[1]), calcAge(birthYears[2])];
+console.log(ages);
