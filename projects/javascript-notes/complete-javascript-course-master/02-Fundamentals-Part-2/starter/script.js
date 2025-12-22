@@ -155,7 +155,6 @@ const a2 = 10;
 const b1 = 22;
 const b2 = 22;
 
-*/
 
 //============================================================================================================================================
 // Arrays
@@ -203,3 +202,43 @@ console.log(age1, age2, age3);
 // We can also add functions inside the array because in javascript expressions can be added inside the array
 const ages = [calcAge(birthYears[0]), calcAge(birthYears[1]), calcAge(birthYears[2])];
 console.log(ages);
+
+// Array Operation (Methods)
+
+const friends = ['mary', 'spiderman', 'deadpool'];
+console.log(friends);
+const newFriends = friends.push('john');    //Push is a funciton which pushes the data into the array at the end of it.
+
+console.log(friends); // 'john' was being added at the beginning 
+console.log(newFriends);  //when i console.log(newFriends) it will immedieatly return the length of the particular array, It is one of the method to find the length
+
+// Add
+friends.unshift('batman'); // adding the element at the front
+console.log(friends);
+
+// pop -> Remove the elements from the last
+friends.pop();
+const popped = friends.pop();
+console.log(popped);
+console.log(friends);
+
+//shift  -> Remove the element from the first
+friends.shift();
+console.log(friends);
+
+//indexOf  ->  This is a function which finds the position of the element
+
+console.log(friends.indexOf('spiderman'));
+console.log(friends.indexOf('antman'))    // This results -1 if no elements inside the array
+
+//includes -> This determines if it is there inside the array of not
+
+console.log(friends.includes('spiderman'));
+console.log(friends.includes('nanoman'));
+
+if (friends.includes('spiderman')) {
+    console.log("Ypu have a friend names spidyyy");
+}
+    
+
+*/
