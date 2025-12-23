@@ -291,7 +291,6 @@ if (nanda[nandaFriends]) {
     console.log(`${nanda.firstName}, has ${nanda.friends.length} frineds and his best friend is ${nanda.friends[0]}`);
 }
 
-*/
 
 //objects methods
 
@@ -341,3 +340,5 @@ console.log(nanda.age);
 console.log(nanda.age);
 console.log(nanda.getSummary());
 
+
+*/
