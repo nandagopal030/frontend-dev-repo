@@ -9,7 +9,7 @@ console.log("Hello");
 const interface = 'Audio';    //errror :: Uncaught SyntaxError: Unexpected strict mode reserved word (at script.js:8:7)
 const private = "i am a private"; //error :: The ( private ) is a reserved keyword and ( if ) ( while ) ( for ) many things which was not mentioned here is a reserved keyword so if we use the reserved keyword with mentioning the strict mode it throws an error
 
-
+===================================================================================================================================================
 
 //Function     ->  (Reusable chunk of code)   -> Functions are fundamental building block of javascript
 
@@ -154,6 +154,9 @@ const a1 = 10;
 const a2 = 10;
 const b1 = 22;
 const b2 = 22;
+
+===================================================================================================================================================
+
 
 
 //============================================================================================================================================
@@ -311,7 +314,7 @@ const nanda = {
     //     return 2020 - birthYear;
     // }
 
-    // using this 
+    // using this
     // calcAge: function () {
     //     console.log(this);
     //     return 2020 - this.birthYear;
@@ -339,6 +342,105 @@ const nanda = {
 console.log(nanda.age);
 console.log(nanda.age);
 console.log(nanda.getSummary());
+
+==================================================================================================================================================
+
+// ===============================================================================================================================================
+// Looping
+// for loops works in a conditional based way where it breaks untill it is false
+
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`My repetation at the gym is ${rep} 🏋️‍♂️🏋🏿‍♂️`);
+}
+
+// looping breaking and continuing
+
+const jonasLife = [
+    'jonas',
+    'scheddleman',
+    2002 - 1990,
+    'teacher',
+    ['hari', 'sori', 'soori'],
+    true
+]
+
+// Adding a value to an empty array
+const types = [];
+
+for (let i = 0; i < jonasLife.length; i++) {
+    //Reading an element
+    // console.log(jonasLife[i], typeof jonasLife[i]);
+
+    //Filling an element
+    // types[i] = typeof jonasLife[i];
+
+    //Filling the element from the last so we use push
+    // types.push(typeof jonasLife[i]);
+
+}
+console.log(types);
+
+const years = [1992, 1983, 1823, 2003];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+    ages.push(2030 - years[i]);
+}
+console.log(ages);
+
+//continue and break
+// break is used to completly terminate the entier loop
+// continue we can exit the current iteration of the loop
+
+//continue statement
+
+const nandaLife = [
+    'nanda',
+    'michel jordan',
+    2025 - 2003,
+    ['western', 'eastern', 'modern'],
+    true
+]
+
+console.log('--working of continue statement');
+
+for (let i = 0; i < nandaLife.length; i++) {
+    if (typeof nandaLife[i] !== 'string') continue;
+    console.log(nandaLife[i]);
+}
+
+console.log('--- working of a break statement');
+
+for (let i = 0; i < nandaLife.length; i++) {
+    if (typeof nandaLife[i] === 'number') break;
+    console.log(nandaLife[i]);
+}
+
+
+// Looping Backwards and Looping Inwards 
+
+const nandaLife = [
+    'nanda',
+    'michel jordan',
+    2025 - 2003,
+    ['western', 'eastern', 'modern'],
+    true
+]
+
+// Looping Backwards
+for (let i = nandaLife.length; i >= 0; i--) {
+    console.log(i, nandaLife[i]);
+}
+
+//Looping inside loops 
+
+for (let i = 0; i < 4; i++) {
+    console.log('-------- Starting Exercise Reps');
+
+    for (let j = 0; j < 6; j++) {
+        console.log(`Gym kahan sei repetation ${j} 🏋️‍♂️🏋️‍♂️`);
+    }
+}
 
 
 */
