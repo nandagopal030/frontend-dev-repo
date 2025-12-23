@@ -442,5 +442,24 @@ for (let i = 0; i < 4; i++) {
     }
 }
 
+//While loops
+
+for (let i = 0; i < 10; i++) {
+    console.log(`Lifting weight repetation for about ${i} reps 🏋️‍♂️`);
+}
+
+let reps = 1;
+while (reps < 10) {
+    console.log(`WHILE LOOP : Lifting weight repetation ${reps} 🏋🏿‍♂️`);
+    reps++;
+}
 
 */
+//Dice Rolling example uisng while loop
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+    console.log(`You Rolled a dice as ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+}
