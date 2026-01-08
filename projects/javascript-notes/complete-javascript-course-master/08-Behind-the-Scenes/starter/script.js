@@ -164,6 +164,3 @@ const nanda = {
 
 nanda.greet(); // returns the heY mama becz now the var firstName will fall under the global and it arrow fucntions will always looks for the global this which is parent this and because of the var it returns the heY mama
 nanda.calcAge();
-
-
-
