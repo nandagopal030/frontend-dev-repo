@@ -134,12 +134,12 @@ f();
 
 // THis is not a  code block this is actually an object literal
 // never ever use an arrow function as a method inside the object
-var firstName = 'mama';
-const nanda = {
-  firstName: 'Banda',
-  year: 1991,
-  calcAge: function () {
-    console.log(2024 - this.year);
+// var firstName = 'mama';
+// const nanda = {
+//   firstName: 'Banda',
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(2024 - this.year);
 
     // solution 1
     //   const self = this; // It can be used as self / that
@@ -152,18 +152,97 @@ const nanda = {
 
     // solution 2
     // no error becx we use arrow function
-    const isminimal = () => {
-      console.log('adkc  ca');
-      console.log(this);
-      console.log(this.year >= 1981 && this.year <= 1996);
-    };
-    isminimal();
-  },
-  greet: () => console.log(` heY ${this.firstName}`), // for arrow funcitons this is undefiend and it searches for its globel scope this there is no globel soce so returned undefiend here in this case
-};
+//     const isminimal = () => {
+//       console.log('adkc  ca');
+//       console.log(this);
+//       console.log(this.year >= 1981 && this.year <= 1996);
+//     };
+//     isminimal();
+//   },
+//   greet: () => console.log(` heY ${this.firstName}`), // for arrow funcitons this is undefiend and it searches for its globel scope this there is no globel soce so returned undefiend here in this case
+// };
 
-nanda.greet(); // returns the heY mama becz now the var firstName will fall under the global and it arrow fucntions will always looks for the global this which is parent this and because of the var it returns the heY mama
-nanda.calcAge();
+// nanda.greet(); // returns the heY mama becz now the var firstName will fall under the global and it arrow fucntions will always looks for the global this which is parent this and because of the var it returns the heY mama
+// nanda.calcAge();
+
+// --------------------------------------------------------------------------------------------------------------------------------------------
 
 
+// primitives are being stored in the stack and other than primitives (objects) are being stored in the heap
+// This example code describes the original object references is being copied to another new one both points out the same object referneces so when we change any refernece in the cloned part the original refernece is also being changed that is how it works
+// we are using const here which clearly denotes that we cannot change the memory address of the object but we can change the properties of the objects
+
+// const jessica = {    // object
+//   // object references  / object properties
+//   firstName : 'jessica',  
+//   lastName : 'William',   
+//   age : 33
+// }
+
+
+// // Manually copying the object reference to a variable jessicaMarried
+// // const jessicaMarried = jessica;
+// // jessicaMarried.lastName = 'marian';
+
+
+// // Copying the object reference through a function
+// function Married(originalPerson, newLastName){
+//   originalPerson.lastName = newLastName;
+//   return originalPerson;
+
+
+// const jessicaMarried = Married(jessica, 'davis');
+
+// console.log('Before: ', jessica);
+// console.log('After:', jessicaMarried);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Shallow copy
+// const jessica2 = {
+//   firstName : 'jessica',
+//   lastName : 'williams',
+//   age : 23,
+//   family : ['alice', 'bob']
+// }
+
+// shallow copy
+// shallow copy means we are actually copying the properites of the jessica2 object to the jessicaCopy variable where the the primitives are
+//  fn,ln,age will be coipied as another reference and the family array will be copied as a single object reference like before so when we try to 
+// change the primitives all the primitive new reference will be changed and the new copyobject will result the change but the cache is in the array
+//  where if anything changed in the copy the main object which is the jessica2 object will also be changed
+
+// const jessicaCopy = {...jessica2};
+// jessicaCopy.lastName = 'Davis';
+// jessicaCopy.family.push('nand');
+// jessicaCopy.family.push('govind');
+
+// console.log(jessica2, jessicaCopy);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// DeepCopy / DeepClone
+// DeepCopy copies all the properties inside the object and even a new is created inside an object means it will also create a new reference and clone the copy
+
+
+const jessica3 = {
+  firstName : 'jessica',
+  lastName : 'williams',
+  age : 23,
+  family : ['alice', 'bob']
+}
+
+const jessica3Clone = structuredClone(jessica3);
+jessica3Clone.family.push('nanda');
+jessica3Clone.family.push('ramana');
+
+console.log('Before Clone',jessica3);
+console.log("After Clone", jessica3Clone);
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------
+// Garbage Collection in Js
+
+// inside Global Execution context -> Globel variables  will never be deleted 
+// THis will follow the mark and sweep algorithms
 
