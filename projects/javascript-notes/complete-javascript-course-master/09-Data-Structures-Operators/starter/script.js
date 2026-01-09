@@ -212,3 +212,31 @@ console.log(restaturantCopy);
 */
 
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//The spread operator because it applies on the = RIGHT Side
+// The rest operator because it applied on the = LEFT Side
+
+
+const numbers = [1,2,3,4];
+console.log(-1,0 ,...numbers);
+
+const [a,b , ...other] = [1,2,3,4,5];
+console.log(a, b, other)
+
+//The rest operator should always appers at the end of the statement to carry all the things ...others
+const [pizza , , rizzato, ...others] =   [...restaurant.mainMenu, ...restaurant.starterMenu]
+
+console.log(pizza, rizzato, others);
+
+//objects
+
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log( weekdays);
+
+
+
+
+
+
+
