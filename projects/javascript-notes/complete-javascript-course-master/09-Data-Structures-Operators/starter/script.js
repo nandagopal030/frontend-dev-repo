@@ -34,6 +34,13 @@ const restaurant = {
     return [this.starterMenu[starter], this.mainMenu[mainDish]];
   },
 
+  // This funciton represents the function parameter has got an single object as a parameter and this parameter is being destructured and then being used inside the function body
+  orderDelivery : function({startIndex = 1, endIndex =1, day = 'any weekday', time = 'ketaneram'}){
+    console.log(
+      `Order Deliverd !! ${this.starterMenu[startIndex]} and the ordered date is ${day} and the time is ${time} 
+      and endIndex is ${endIndex}`
+    );
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -50,8 +57,21 @@ const restaurant = {
   },
 };
 
-//-------------------------------------------------------------------------------------------------------------------------------------------------
+// this object is sent as the parameter for the fucntion inside the restarunt object
+restaurant.orderDelivery({
+  time: '22:30',
+  day: 'today',
+  startIndex : 1,
+  endIndex: 2
+});
 
+//specifying an empty values in the parameter and calling the funciton again
+restaurant.orderDelivery({
+  day: 'wednesday',
+  startIndex: 2
+});
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 // Array Destructuring
 const arr = [2, 3, 4];
 const [x, y, z] = arr;
@@ -82,3 +102,41 @@ console.log(a, b, c);
 
 const [p = 1, q = 1, r = 1] = [1, 2];
 console.log(p, q, r);
+*/
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Objects Destructuring
+// Objects destructuring is a slight different from array destructuring where the names define in the variable need to be present in the object properties and it need to be defined with the curly braces { }
+const {name, mainMenu, openingHours} = restaurant;
+console.log(name, mainMenu, openingHours);
+
+const {name: firstName, mainMenu : menus, openingHours : hours} = restaurant;
+console.log(hours, firstName, menus);
+
+// Adding default values to the objects
+// where the menu does not exist
+const {menu = [], categories = []} = restaurant;
+console.log(menu, categories);
+
+// Mutating variable
+
+let a = 21;
+let b = 22;
+
+const obj = {
+  a : 31,
+  b: 32,
+  c : 33
+};
+
+({a, b} = obj);
+console.log(a, b);
+
+// Nested Objects destructring
+// openingHours is already been destructured above
+
+const {
+  fri: {open:o,  close:c},
+      } = openingHours;
+console.log(o, c);
