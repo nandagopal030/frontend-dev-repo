@@ -41,6 +41,9 @@ const restaurant = {
       and endIndex is ${endIndex}`
     );
   },
+  orderPasta : function(ing1, ing2 , ing3){
+    console.log(`I had used many ingridients and it is as follows ${ing1}, thn ${ing2}, then ${ing3}`);
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -57,7 +60,9 @@ const restaurant = {
   },
 };
 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 // this object is sent as the parameter for the fucntion inside the restarunt object
+/*
 restaurant.orderDelivery({
   time: '22:30',
   day: 'today',
@@ -70,6 +75,11 @@ restaurant.orderDelivery({
   day: 'wednesday',
   startIndex: 2
 });
+*/
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 /*
 // Array Destructuring
@@ -105,7 +115,7 @@ console.log(p, q, r);
 */
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
-
+/*
 // Objects Destructuring
 // Objects destructuring is a slight different from array destructuring where the names define in the variable need to be present in the object properties and it need to be defined with the curly braces { }
 const {name, mainMenu, openingHours} = restaurant;
@@ -140,3 +150,65 @@ const {
   fri: {open:o,  close:c},
       } = openingHours;
 console.log(o, c);
+
+*/
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Spread operator
+// When ever we need the induvidual elements instead of using for loop we can use the spread operator
+// According to Es16 the srpead operator also works on the objects
+
+/*
+
+let arr = [7,8,9];
+console.log(arr);
+let dirtyArray = [1,2,3,arr[0], arr[1], arr[2]];
+console.log(dirtyArray);
+
+let goodArr = [1,2,...arr];
+console.log(goodArr);
+console.log(...goodArr);
+
+
+const newMenu = [...restaurant.starterMenu , 'italian delight']
+console.log(newMenu);
+
+// copy an array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+//Join two array
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// Except objects all the others are iterables (arrays, strings, maps, sets)
+// spread operators can oly be used while we use it for an array or we send it as a parameter
+
+const str = 'jonas';
+console.log(...str);
+
+// const ingridients = [
+//   // prompt('Enter the ingrident1'), prompt('Enter the ingrident 2'),prompt('Enter the ingrident 3 '),
+// ]
+
+//older method of calling the funciton by passing arguments
+// restaurant.orderPasta(ingridients[0], ingridients[1], ingridients[2]);
+
+// By using spread operator ...
+// restaurant.orderPasta(...ingridients);
+
+// Objects
+
+const newRestaurent = {foundIn : 1992, ...restaurant , founder : 'nanda'};
+console.log(restaurant);
+console.log(newRestaurent);
+
+// shallow copy (The original reference is dito copyed and nothing can be changed from the original)
+
+const restaturantCopy = {...restaurant};
+restaturantCopy.location = 'chennai';
+console.log(restaurant);
+console.log(restaturantCopy);
+
+*/
+
+
