@@ -35,14 +35,25 @@ const restaurant = {
   },
 
   // This funciton represents the function parameter has got an single object as a parameter and this parameter is being destructured and then being used inside the function body
-  orderDelivery : function({startIndex = 1, endIndex =1, day = 'any weekday', time = 'ketaneram'}){
+  orderDelivery: function ({
+    startIndex = 1,
+    endIndex = 1,
+    day = 'any weekday',
+    time = 'ketaneram',
+  }) {
     console.log(
       `Order Deliverd !! ${this.starterMenu[startIndex]} and the ordered date is ${day} and the time is ${time} 
       and endIndex is ${endIndex}`
     );
   },
-  orderPasta : function(ing1, ing2 , ing3){
-    console.log(`I had used many ingridients and it is as follows ${ing1}, thn ${ing2}, then ${ing3}`);
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `I had used many ingridients and it is as follows ${ing1}, thn ${ing2}, then ${ing3}`
+    );
+  },
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
   },
   openingHours: {
     thu: {
@@ -77,8 +88,6 @@ restaurant.orderDelivery({
 });
 */
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -211,32 +220,51 @@ console.log(restaturantCopy);
 
 */
 
-
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+/*
 //The spread operator because it applies on the = RIGHT Side
 // The rest operator because it applied on the = LEFT Side
 
+// 1) Destruturing
+const numbers = [1, 2, 3, 4];
+console.log(-1, 0, ...numbers);
 
-const numbers = [1,2,3,4];
-console.log(-1,0 ,...numbers);
-
-const [a,b , ...other] = [1,2,3,4,5];
-console.log(a, b, other)
+//Left side because Left side of the assignment
+const [a, b, ...other] = [1, 2, 3, 4, 5];
+console.log(a, b, other);
 
 //The rest operator should always appers at the end of the statement to carry all the things ...others
-const [pizza , , rizzato, ...others] =   [...restaurant.mainMenu, ...restaurant.starterMenu]
+const [pizza, , rizzato, ...others] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
 
 console.log(pizza, rizzato, others);
 
 //objects
 
-const {sat, ...weekdays} = restaurant.openingHours;
-console.log( weekdays);
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
 
+// 2) Functions
+// this function argument is taken as a rest operator
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+add(1, 2, 3);
+add(1, 2, 3, 4, 5);
+add(192, 11, 331);
 
+let x = [2, 3, 4];
+add(...x);
 
+restaurant.orderPizza('onion', 'chicken', 'pasta', 'pepronies');
 
+*/
 
-
-
+//--------------------------------------------------------------------------------------------------------------------------
