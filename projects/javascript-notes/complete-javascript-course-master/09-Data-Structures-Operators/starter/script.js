@@ -22,6 +22,25 @@ const mexicanFoods = new Set([
   'garlic',
 ]);
 
+
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+console.log(openingHours);
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -30,12 +49,25 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  order: function (starter, mainDish) {
+  // older javascript object literals writing method
+
+  // order: function (starter, mainDish) {
+  //   return [this.starterMenu[starter], this.mainMenu[mainDish]];
+  // },
+
+  // Newer javascript method
+  order(starter, mainDish) {
     return [this.starterMenu[starter], this.mainMenu[mainDish]];
   },
 
+
+
+  openingHours: openingHours, // old school javascript method
+  //enhanced object literals
+  openingHours, // new javascript es6 methods
+
   // This funciton represents the function parameter has got an single object as a parameter and this parameter is being destructured and then being used inside the function body
-  orderDelivery: function ({
+  orderDelivery({
     startIndex = 1,
     endIndex = 1,
     day = 'any weekday',
@@ -46,31 +78,18 @@ const restaurant = {
       and endIndex is ${endIndex}`
     );
   },
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(
       `I had used many ingridients and it is as follows ${ing1}, thn ${ing2}, then ${ing3}`
     );
   },
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-};
 
+};
+console.log(restaurant);
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 // this object is sent as the parameter for the fucntion inside the restarunt object
 /*
@@ -268,3 +287,21 @@ restaurant.orderPizza('onion', 'chicken', 'pasta', 'pepronies');
 */
 
 //--------------------------------------------------------------------------------------------------------------------------
+
+// looping for-of loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const item of menu.entries()) console.log(item);
+console.log([...menu.entries()]);
+
+console.log('-------------Old School Method---------------');
+for (const item of menu.entries()) {
+  console.log(`${item[0]}, ${item[1]}`)
+}
+console.log('-----------------New Javascript method---------------');
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
