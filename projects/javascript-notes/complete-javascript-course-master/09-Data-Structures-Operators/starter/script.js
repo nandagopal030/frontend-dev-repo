@@ -340,7 +340,7 @@ console.log(user[2]?.name ?? 'user does not exist');
 */
 //--------------------------------------------------------------------------------------------------------------------------------
 // for of loop for object keys, values, Entries
-
+/*
 // property Names
 const openDays = Object.keys(openingHours);
 console.log(openDays);
@@ -367,6 +367,38 @@ console.log(entries);
 for(const [key, {open,close}] of entries){
   console.log(` our shop is on ${key} and opens at ${open} then close at ${close}`);
 }
+*/
 
+//------------------------------------------------------------------------------------------------------------------
+// Sets 
+
+// set is a collection of unique value
+// set can also hold mixed data types
+
+const orderSet = new Set(['pasta', 'pizza', 'pasta', 'pizza', 'bread']);
+console.log(orderSet.size);
+console.log(orderSet.has('butter'));
+
+console.log(new Set('Jonas'));
+
+console.log(orderSet.add('rissato'));
+console.log(orderSet.delete('pasta'));
+console.log(orderSet.add('pepronii'));
+console.log(orderSet.add('rissato'));
+// console.log(orderSet.clear());
+console.log(orderSet);
+
+// for of loops sets
+for (const a of orderSet) console.log(a);
+// main usecase of sets is to remove the duplicate values of an arrays
+
+const staff = ['chef', 'waiter', 'chef', 'manager', 'waiter'];
+
+const staffOri = new Set(staff);
+
+// spread operator converts the set to an array now
+const staffOriginal = [...new Set(staff)];
+console.log(staffOriginal);
+console.log(new Set(['chef', 'waiter', 'chef', 'manager', 'waiter']).size);
 
 
