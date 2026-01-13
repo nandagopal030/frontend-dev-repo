@@ -305,3 +305,25 @@ console.log('-----------------New Javascript method---------------');
 for (const [i, el] of menu.entries()) {
   console.log(`${i + 1}: ${el}`);
 }
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Optional Chanining
+// Normal traditional method 
+if(restaurant.openingHours && restaurant.openingHours.mon) {
+  console.log(restaurant.openingHours.mon.open);
+}
+
+//optionalChaining method
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+//Example 
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat','sun'];
+
+for(const day of days){
+    const open = restaurant.openingHours[day]?.open ?? 'closed';
+    console.log(`${day} we have ${open} hours`);
+}
+//Methods
+
+
