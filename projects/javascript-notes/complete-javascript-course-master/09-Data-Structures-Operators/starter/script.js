@@ -1,5 +1,6 @@
 'use strict';
 
+
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -287,7 +288,7 @@ restaurant.orderPizza('onion', 'chicken', 'pasta', 'pepronies');
 */
 
 //--------------------------------------------------------------------------------------------------------------------------
-
+/*
 // looping for-of loop
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
@@ -305,11 +306,12 @@ console.log('-----------------New Javascript method---------------');
 for (const [i, el] of menu.entries()) {
   console.log(`${i + 1}: ${el}`);
 }
-
+*/
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Optional Chanining
 // Normal traditional method 
-if(restaurant.openingHours && restaurant.openingHours.mon) {
+/*
+if (restaurant.openingHours && restaurant.openingHours.mon) {
   console.log(restaurant.openingHours.mon.open);
 }
 
@@ -318,12 +320,53 @@ console.log(restaurant.openingHours.mon?.open);
 console.log(restaurant.openingHours?.mon?.open);
 
 //Example 
-const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat','sun'];
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
-for(const day of days){
-    const open = restaurant.openingHours[day]?.open ?? 'closed';
-    console.log(`${day} we have ${open} hours`);
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`${day} we have ${open} hours`);
 }
+
 //Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+
+const user =  [
+  { name: 'nanda',
+    age: 22}
+];
+
+console.log(user[2]?.name ?? 'user does not exist');
+
+*/
+//--------------------------------------------------------------------------------------------------------------------------------
+// for of loop for object keys, values, Entries
+
+// property Names
+const openDays = Object.keys(openingHours);
+console.log(openDays);
+
+for(const day of openDays){
+  console.log(day);
+}
+let openStr  = `We are open for ${openDays.length} `;
+
+for(let day of openDays){
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+// property values
+const values =  Object.values(openingHours);
+console.log(values);
+
+
+// entries are the index number -> returns key + value
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for(const [key, {open,close}] of entries){
+  console.log(` our shop is on ${key} and opens at ${open} then close at ${close}`);
+}
+
 
 
