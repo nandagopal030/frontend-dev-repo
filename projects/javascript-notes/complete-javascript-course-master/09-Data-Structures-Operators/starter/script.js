@@ -5,23 +5,6 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-const italianFoods = new Set([
-  'pasta',
-  'gnocchi',
-  'tomatoes',
-  'olive oil',
-  'garlic',
-  'basil',
-]);
-
-const mexicanFoods = new Set([
-  'tortillas',
-  'beans',
-  'rice',
-  'tomatoes',
-  'avocado',
-  'garlic',
-]);
 
 
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
@@ -402,3 +385,64 @@ console.log(staffOriginal);
 console.log(new Set(['chef', 'waiter', 'chef', 'manager', 'waiter']).size);
 
 
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+// New operations to make set Useful
+
+const italianFoods = new Set([
+  'pasta',
+  'gnocchi',
+  'tomatoes',
+  'olive oil',
+  'garlic',
+  'basil',
+]);
+
+const mexicanFoods = new Set([
+  'tortillas',
+  'beans',
+  'rice',
+  'tomatoes',
+  'avocado',
+  'garlic',
+]);
+
+// logging the common item on the two Foods
+
+// intersection method
+const commonItems = italianFoods.intersection(mexicanFoods);
+console.log( 'intersection', commonItems);
+
+console.log('Common foods on set are ', commonItems);
+console.log([...commonItems]);
+
+// union method
+
+const commonItemsFusion = italianFoods.union(mexicanFoods); // union using union method of two sets
+console.log('union', commonItemsFusion);
+
+console.log( [...italianFoods,...mexicanFoods]); // union of two arrays
+
+// difference
+const differenceItems = italianFoods.difference(mexicanFoods);
+console.log('Differnece : ' , differenceItems);
+
+const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
+console.log('difference Mexican foods: ', uniqueMexicanFoods);
+
+// SymmetricDifference
+
+const mexicanSymmetricItallin = mexicanFoods.symmetricDifference(italianFoods);
+console.log('mexicanSymmetricItallian : ', mexicanSymmetricItallin);
+
+
+// isDisjointFrom  checks if both has a unique value and does not contains duplicate
+console.log(italianFoods.isDisjointFrom(mexicanFoods));
+
+// Other methods are 
+// isSubsetOf() and isSupersetOf();
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ 
