@@ -1,6 +1,9 @@
 'use strict';
 
 
+
+
+
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -411,7 +414,7 @@ const mexicanFoods = new Set([
 
 // intersection method
 const commonItems = italianFoods.intersection(mexicanFoods);
-console.log( 'intersection', commonItems);
+console.log('intersection', commonItems);
 
 console.log('Common foods on set are ', commonItems);
 console.log([...commonItems]);
@@ -421,11 +424,11 @@ console.log([...commonItems]);
 const commonItemsFusion = italianFoods.union(mexicanFoods); // union using union method of two sets
 console.log('union', commonItemsFusion);
 
-console.log( [...italianFoods,...mexicanFoods]); // union of two arrays
+console.log([...italianFoods, ...mexicanFoods]); // union of two arrays
 
 // difference
 const differenceItems = italianFoods.difference(mexicanFoods);
-console.log('Differnece : ' , differenceItems);
+console.log('Differnece : ', differenceItems);
 
 const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
 console.log('difference Mexican foods: ', uniqueMexicanFoods);
@@ -445,4 +448,86 @@ console.log(italianFoods.isDisjointFrom(mexicanFoods));
 //------------------------------------------------------------------------------------------------------------------------------------------
 
 
- 
+// Maps Fundamentals
+// Map Methods -> set, get
+// map is like an object it also contains the key value pairs but the cache is the key
+// can be of any types strings, numbers, array, set or another map
+
+const rest = new Map();
+//set
+rest.set('name', 'mary, jennifer');
+rest.set(true, 'Open to work').set(false, 'close to work');
+rest.set(1, 'portugal');
+rest.set(2, 'france').set('open', 11).set('close', 23);
+
+rest.set('Have kids', 2).set('Have Husband', false).set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+console.log(rest);
+
+const time = 3;
+console.log(rest.get(1));
+
+//get
+console.log(rest.get(time >= rest.get('open') && time <= rest.get('close')));
+
+//has
+console.log(rest.has('categories'))
+//delete
+console.log(rest.delete(1));
+console.log(rest);
+
+//size
+console.log(rest.size);
+
+//clear()
+// console.log(rest.clear());
+console.log(rest);
+
+
+//if we pass the array the reference point needed to be cleared (memory management)
+const arr = [1, 2];
+rest.set(arr, 'pass');
+console.log(rest.get(arr));
+
+
+rest.set(document.querySelector('h1'), 'heading');
+console.log(rest);
+
+
+// Maps seen so far
+
+const question = new Map([
+  ['question', 'which is the best programming language in the world ?'],
+  [1, 'c'],
+  [2, 'java'],
+  [3, 'javascript'],
+  ['correct', 3],
+  [true, 'correct'],
+  [false, 'Try Again!!!']
+]);
+
+console.log(question);
+
+console.log(Object.entries(openingHours));
+
+const hours = new Map(Object.entries(openingHours));
+console.log(hours);
+
+
+console.log(question.get('question'));
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key} is ${value}`);
+  }
+}
+
+// const userAns = Number(prompt("Enter the corrrect option"));
+
+// console.log(question.get(question.get('correct') === userAns));
+
+
+// convert Maps to arrays
+console.log([...question]);
+console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
