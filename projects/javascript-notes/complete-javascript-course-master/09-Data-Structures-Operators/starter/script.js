@@ -268,3 +268,83 @@ restaurant.orderPizza('onion', 'chicken', 'pasta', 'pepronies');
 */
 
 //--------------------------------------------------------------------------------------------------------------------------
+/*
+// Short circuting (&&  ||)
+// use Any data type , return ANY data type,
+// short-circuting
+// first truthy value will get printed here
+
+console.log('-----OR------');
+
+console.log(3 || 'jonas');
+console.log('' || 'nanda');
+console.log(undefined || null);
+console.log(true || 0);
+
+console.log(undefined || 0 || '' || 'Hello' || 22 || null);
+
+// with || or operator
+restaurant.numGuests = 22;
+const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guest1);
+
+const guest2 = restaurant.numGuests || 10;
+console.log(guest2);
+
+console.log('-----AND------');
+// AND operator works different from OR operator
+//   returns first falsy value
+console.log(0 && 'jonas');
+console.log(7 && 'nanda');
+
+console.log('hello' && 22 && null && 'jonas');
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushroom', 'spinash');
+}
+restaurant.orderPizza && restaurant.orderPizza('misroom', 'ssmsk');
+*/
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+//114. The Nullish Coalescing Operator (??)
+restaurant.numguest = 0;
+const guess = restaurant.numguest || 10;
+console.log(guess);
+
+// Nullish : null and undefined (NOT 0 or '')
+
+const guest2 = restaurant.numguest ?? 10;
+console.log(guest2);
+*/
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Logical Assignment operators
+
+const rest1 = {
+  name: 'capri',
+  // numGuests: 20,
+  numGuests: 0,
+};
+const rest2 = {
+  name: 'La pizzara',
+  owner: 'govindarajan',
+};
+
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// nullish assignment operator NULL or Undefined
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
+
+// In &&  operater the if the first value is falsy then returns the falsy value;
+//            truthy           falsy
+// rest2.owner = rest2.owner && '<ANonymous>>';
+rest1.owner &&= 'Anonymous';
+rest2.owner &&= 'Anonymous';
+
+console.log(rest1);
+console.log(rest2);
