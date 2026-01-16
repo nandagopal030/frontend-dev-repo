@@ -370,11 +370,21 @@ const printBookAuthorsCount = function (title, ...authors) {
 };
 printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
 
+<<<<<<< HEAD
 //-----------------------------------------------------------------------------------------------------------------------
 //Short Circuiting (&& and ||)
 //5.1;
 // Some of the book objects have the programmingLanguage property,
 //  which specifies what programming language is used in the book, for example
+=======
+
+//-----------------------------------------------------------------------------------------------------------------------
+
+//Short Circuiting (&& and ||)﻿
+// 5.1﻿
+// Some of the book objects have the programmingLanguage property, 
+// which specifies what programming language is used in the book, for example
+>>>>>>> 132181e049e8d66e6ee42ae520c1c11aae7a0f97
 /*
 {
   title: 'Algorithms',
@@ -382,6 +392,7 @@ printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
   ...
   programmingLanguage: 'Java',     // <-- HERE
 }
+<<<<<<< HEAD
   */
 //Write a function called hasExamplesInJava that takes a book object from the books array as an argument.
 //  This function should return true if the book uses Java, or a string 'no data available'
@@ -397,6 +408,25 @@ console.log(hasExamplesInJava(books[1]));
 // Some of the book objects have the onlineContent property, which is either true or false.
 //  Loop over the books array, and for the books that provide online content, log to the console a string
 //  in this format: "${title}" provides online content. Use short-circuiting.
+=======
+*/
+// Write a function called hasExamplesInJava that takes a book object from the books array 
+// as an argument. This function should return true if the book uses Java, or a string 
+// 'no data available' if it uses other language or no programming language at all.
+
+function hasExamplesInJava(book) {
+  return book.programmingLanguage === 'Java' || 'no data available';
+}
+console.log(hasExamplesInJava(books[0]));
+console.log('acsk  vc')
+
+// 5.2﻿
+// Some of the book objects have the onlineContent property, 
+// which is either true or false. Loop over the books array, and for the books 
+// that provide online content, log to the console a string in this 
+// format: "${title}" provides online content. Use short-circuiting.
+
+>>>>>>> 132181e049e8d66e6ee42ae520c1c11aae7a0f97
 /*
 {
   title: 'Operating System Concepts',
@@ -404,6 +434,7 @@ console.log(hasExamplesInJava(books[1]));
   onlineContent: false,          // <-- HERE
 },
 */
+<<<<<<< HEAD
 
 for (let i = 0; i < books.length; i++) {
   books[i].onlineContent &&
@@ -446,3 +477,115 @@ for (let i = 0; i < books.length; i++) {
     (books[i].highlighted &&= !(books[i].thirdParty.goodreads.rating < 4.2))
   );
 }
+=======
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent && console.log(`${books[i].title} provides online content`);
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+// The Nullish Coalescing Operator (??)﻿
+// 6.1﻿
+// There are objects in the books array that don't have the onlineContent property
+//  at all. Loop over the books array, and log a string to the console in this format:
+//  "${title}" provides no data about its online content.
+
+
+console.log(books[3]);
+console.log(books.length);
+
+for (let i = 0; i < books.length; i++) {
+  console.log(books[i].onlineContent ?? `${books[i].title} provides no data about online content`)
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+// Logical Assignments Operators﻿
+// 7.1﻿
+// Some of the book objects from the books array are missing the edition property. 
+// Loop over the books array, and assign this property with a number 1
+// (if it doesn't already exist). Use logical assignment operators.
+
+for (let i = 0; i < books.length; i++) {
+  console.log(books[i].edition || 1);
+}
+
+console.log('-------------------------------break----------------------------------------------')
+// 7.2
+// Some of the book objects from the books array have the highlighted property,
+//  which by default is set to true. Iterate over the books array, and if the
+//  thirdParty.goodreads.rating property is less than 4.2, reassign it with false.
+
+// Use the &&= operator (tip: you may also need the ! operator)
+
+for(let i =0; i < books.length; i++){
+  
+  const a =(books[i].highlighted &&= !(books[i].thirdParty.goodreads.rating < 4.2 ));
+  console.log(a);
+}
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+// Looping Arrays: The for-of Loop﻿
+// 8.1﻿
+// Use the for-of loop to loop over the books array and sum the pages of all books.
+//  Use the pageSum variable below, and the pages property of the book objects.
+
+let pageSum = 0;
+for(const value of books){
+  pageSum += value.pages;
+}
+console.log(pageSum);
+
+
+// 8.2﻿
+// Below is the allAuthors variable which stores an empty array. Use the for-of loop 
+// to fill allAuthors with the authors of each book from the books array.
+// Remember that each book object has the author property, which can be a string
+//  (if there is only a single author) or an array (if there are multiple authors). 
+// You may need to use the typeof operator. You can also use multiple loops if needed.
+//  The allAuthors array should have just one level (no nested arrays).
+
+
+const allAuthors = [];
+// console.log(typeof allAuthors);
+
+console.log('breakkkkkkkkkkkk')
+
+for(const book of books){
+  if(typeof book.author === 'string'){
+    allAuthors.push(book.author);
+  }else{
+    for(const author of book.author)
+    allAuthors.push(author);
+  }
+}
+console.log(allAuthors);
+
+// 8.3﻿
+// Use the for-of loop together with Array's entries() method to log each author from
+//  allAuthors to the console together with its index. Make the index start from 1,
+//  instead of 0.
+/*
+Expected output
+1. Robert Sedgewick
+2. Kevin Wayne
+3. Harold Abelson
+   ...                    // part removed for clarity
+15. Cal Newport
+*/
+
+
+console.log(allAuthors.entries());
+for(const [index, value ] of allAuthors.entries()){
+  console.log(`${index + 1}. ${value}`);
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+>>>>>>> 132181e049e8d66e6ee42ae520c1c11aae7a0f97

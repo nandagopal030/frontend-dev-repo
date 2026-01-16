@@ -1,27 +1,33 @@
 'use strict';
 
+
+
+
+
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-const italianFoods = new Set([
-  'pasta',
-  'gnocchi',
-  'tomatoes',
-  'olive oil',
-  'garlic',
-  'basil',
-]);
 
-const mexicanFoods = new Set([
-  'tortillas',
-  'beans',
-  'rice',
-  'tomatoes',
-  'avocado',
-  'garlic',
-]);
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+console.log(openingHours);
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -30,12 +36,25 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  order: function (starter, mainDish) {
+  // older javascript object literals writing method
+
+  // order: function (starter, mainDish) {
+  //   return [this.starterMenu[starter], this.mainMenu[mainDish]];
+  // },
+
+  // Newer javascript method
+  order(starter, mainDish) {
     return [this.starterMenu[starter], this.mainMenu[mainDish]];
   },
 
+
+
+  openingHours: openingHours, // old school javascript method
+  //enhanced object literals
+  openingHours, // new javascript es6 methods
+
   // This funciton represents the function parameter has got an single object as a parameter and this parameter is being destructured and then being used inside the function body
-  orderDelivery: function ({
+  orderDelivery({
     startIndex = 1,
     endIndex = 1,
     day = 'any weekday',
@@ -46,31 +65,18 @@ const restaurant = {
       and endIndex is ${endIndex}`
     );
   },
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(
       `I had used many ingridients and it is as follows ${ing1}, thn ${ing2}, then ${ing3}`
     );
   },
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-};
 
+};
+console.log(restaurant);
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 // this object is sent as the parameter for the fucntion inside the restarunt object
 /*
@@ -269,6 +275,7 @@ restaurant.orderPizza('onion', 'chicken', 'pasta', 'pepronies');
 
 //--------------------------------------------------------------------------------------------------------------------------
 /*
+<<<<<<< HEAD
 // Short circuting (&&  ||)
 // use Any data type , return ANY data type,
 // short-circuting
@@ -348,3 +355,281 @@ rest2.owner &&= 'Anonymous';
 
 console.log(rest1);
 console.log(rest2);
+=======
+// looping for-of loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const item of menu.entries()) console.log(item);
+console.log([...menu.entries()]);
+
+console.log('-------------Old School Method---------------');
+for (const item of menu.entries()) {
+  console.log(`${item[0]}, ${item[1]}`)
+}
+console.log('-----------------New Javascript method---------------');
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+*/
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Optional Chanining
+// Normal traditional method 
+/*
+if (restaurant.openingHours && restaurant.openingHours.mon) {
+  console.log(restaurant.openingHours.mon.open);
+}
+
+//optionalChaining method
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+//Example 
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`${day} we have ${open} hours`);
+}
+
+//Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+
+const user =  [
+  { name: 'nanda',
+    age: 22}
+];
+
+console.log(user[2]?.name ?? 'user does not exist');
+
+*/
+//--------------------------------------------------------------------------------------------------------------------------------
+// for of loop for object keys, values, Entries
+/*
+// property Names
+const openDays = Object.keys(openingHours);
+console.log(openDays);
+
+for(const day of openDays){
+  console.log(day);
+}
+let openStr  = `We are open for ${openDays.length} `;
+
+for(let day of openDays){
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+// property values
+const values =  Object.values(openingHours);
+console.log(values);
+
+
+// entries are the index number -> returns key + value
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for(const [key, {open,close}] of entries){
+  console.log(` our shop is on ${key} and opens at ${open} then close at ${close}`);
+}
+*/
+
+//------------------------------------------------------------------------------------------------------------------
+// Sets 
+
+// set is a collection of unique value
+// set can also hold mixed data types
+
+const orderSet = new Set(['pasta', 'pizza', 'pasta', 'pizza', 'bread']);
+console.log(orderSet.size);
+console.log(orderSet.has('butter'));
+
+console.log(new Set('Jonas'));
+
+console.log(orderSet.add('rissato'));
+console.log(orderSet.delete('pasta'));
+console.log(orderSet.add('pepronii'));
+console.log(orderSet.add('rissato'));
+// console.log(orderSet.clear());
+console.log(orderSet);
+
+// for of loops sets
+for (const a of orderSet) console.log(a);
+// main usecase of sets is to remove the duplicate values of an arrays
+
+const staff = ['chef', 'waiter', 'chef', 'manager', 'waiter'];
+
+const staffOri = new Set(staff);
+
+// spread operator converts the set to an array now
+const staffOriginal = [...new Set(staff)];
+console.log(staffOriginal);
+console.log(new Set(['chef', 'waiter', 'chef', 'manager', 'waiter']).size);
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+// New operations to make set Useful
+
+const italianFoods = new Set([
+  'pasta',
+  'gnocchi',
+  'tomatoes',
+  'olive oil',
+  'garlic',
+  'basil',
+]);
+
+const mexicanFoods = new Set([
+  'tortillas',
+  'beans',
+  'rice',
+  'tomatoes',
+  'avocado',
+  'garlic',
+]);
+
+// logging the common item on the two Foods
+
+// intersection method
+const commonItems = italianFoods.intersection(mexicanFoods);
+console.log('intersection', commonItems);
+
+console.log('Common foods on set are ', commonItems);
+console.log([...commonItems]);
+
+// union method
+
+const commonItemsFusion = italianFoods.union(mexicanFoods); // union using union method of two sets
+console.log('union', commonItemsFusion);
+
+console.log([...italianFoods, ...mexicanFoods]); // union of two arrays
+
+// difference
+const differenceItems = italianFoods.difference(mexicanFoods);
+console.log('Differnece : ', differenceItems);
+
+const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
+console.log('difference Mexican foods: ', uniqueMexicanFoods);
+
+// SymmetricDifference
+
+const mexicanSymmetricItallin = mexicanFoods.symmetricDifference(italianFoods);
+console.log('mexicanSymmetricItallian : ', mexicanSymmetricItallin);
+
+
+// isDisjointFrom  checks if both has a unique value and does not contains duplicate
+console.log(italianFoods.isDisjointFrom(mexicanFoods));
+
+// Other methods are 
+// isSubsetOf() and isSupersetOf();
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// Maps Fundamentals
+// Map Methods -> set, get
+// map is like an object it also contains the key value pairs but the cache is the key
+// can be of any types strings, numbers, array, set or another map
+
+const rest = new Map();
+//set
+rest.set('name', 'mary, jennifer');
+rest.set(true, 'Open to work').set(false, 'close to work');
+rest.set(1, 'portugal');
+rest.set(2, 'france').set('open', 11).set('close', 23);
+
+rest.set('Have kids', 2).set('Have Husband', false).set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+console.log(rest);
+
+const time = 3;
+console.log(rest.get(1));
+
+//get
+console.log(rest.get(time >= rest.get('open') && time <= rest.get('close')));
+
+//has
+console.log(rest.has('categories'))
+//delete
+console.log(rest.delete(1));
+console.log(rest);
+
+//size
+console.log(rest.size);
+
+//clear()
+// console.log(rest.clear());
+console.log(rest);
+
+
+//if we pass the array the reference point needed to be cleared (memory management)
+const arr = [1, 2];
+rest.set(arr, 'pass');
+console.log(rest.get(arr));
+
+
+rest.set(document.querySelector('h1'), 'heading');
+console.log(rest);
+
+
+// Maps seen so far
+
+const question = new Map([
+  ['question', 'which is the best programming language in the world ?'],
+  [1, 'c'],
+  [2, 'java'],
+  [3, 'javascript'],
+  ['correct', 3],
+  [true, 'correct'],
+  [false, 'Try Again!!!']
+]);
+
+console.log(question);
+
+console.log(Object.entries(openingHours));
+
+const hours = new Map(Object.entries(openingHours));
+console.log(hours);
+
+
+console.log(question.get('question'));
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key} is ${value}`);
+  }
+}
+
+// const userAns = Number(prompt("Enter the corrrect option"));
+
+// console.log(question.get(question.get('correct') === userAns));
+
+
+// convert Maps to arrays
+console.log([...question]);
+console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 132181e049e8d66e6ee42ae520c1c11aae7a0f97
