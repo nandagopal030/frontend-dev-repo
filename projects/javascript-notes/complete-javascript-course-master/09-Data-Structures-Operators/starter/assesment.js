@@ -370,13 +370,12 @@ const printBookAuthorsCount = function (title, ...authors) {
 };
 printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
 
-<<<<<<< HEAD
+
 //-----------------------------------------------------------------------------------------------------------------------
 //Short Circuiting (&& and ||)
 //5.1;
 // Some of the book objects have the programmingLanguage property,
 //  which specifies what programming language is used in the book, for example
-=======
 
 //-----------------------------------------------------------------------------------------------------------------------
 
@@ -384,7 +383,7 @@ printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
 // 5.1﻿
 // Some of the book objects have the programmingLanguage property, 
 // which specifies what programming language is used in the book, for example
->>>>>>> 132181e049e8d66e6ee42ae520c1c11aae7a0f97
+
 /*
 {
   title: 'Algorithms',
@@ -408,8 +407,8 @@ console.log(hasExamplesInJava(books[1]));
 // Some of the book objects have the onlineContent property, which is either true or false.
 //  Loop over the books array, and for the books that provide online content, log to the console a string
 //  in this format: "${title}" provides online content. Use short-circuiting.
-=======
-*/
+
+
 // Write a function called hasExamplesInJava that takes a book object from the books array 
 // as an argument. This function should return true if the book uses Java, or a string 
 // 'no data available' if it uses other language or no programming language at all.
@@ -426,7 +425,7 @@ console.log('acsk  vc')
 // that provide online content, log to the console a string in this 
 // format: "${title}" provides online content. Use short-circuiting.
 
->>>>>>> 132181e049e8d66e6ee42ae520c1c11aae7a0f97
+
 /*
 {
   title: 'Operating System Concepts',
@@ -434,7 +433,7 @@ console.log('acsk  vc')
   onlineContent: false,          // <-- HERE
 },
 */
-<<<<<<< HEAD
+
 
 for (let i = 0; i < books.length; i++) {
   books[i].onlineContent &&
@@ -477,7 +476,6 @@ for (let i = 0; i < books.length; i++) {
     (books[i].highlighted &&= !(books[i].thirdParty.goodreads.rating < 4.2))
   );
 }
-=======
 for (let i = 0; i < books.length; i++) {
   books[i].onlineContent && console.log(`${books[i].title} provides online content`);
 }
@@ -588,4 +586,4 @@ for(const [index, value ] of allAuthors.entries()){
 
 
 
->>>>>>> 132181e049e8d66e6ee42ae520c1c11aae7a0f97
+

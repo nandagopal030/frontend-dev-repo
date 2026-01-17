@@ -713,6 +713,7 @@ console.log(newName);
 
 const capitalize = function (name) {
   const nameSplit = name.split(' ');
+  console.log('namesplit', nameSplit);
   const namesUpper = [];
   for (const n of nameSplit) {
     // namesUpper.push(n[0].toUpperCase() + n.slice(1));    // mwthod 1
