@@ -355,7 +355,7 @@ rest2.owner &&= 'Anonymous';
 
 console.log(rest1);
 console.log(rest2);
-=======
+// =======
 // looping for-of loop
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
@@ -373,7 +373,7 @@ console.log('-----------------New Javascript method---------------');
 for (const [i, el] of menu.entries()) {
   console.log(`${i + 1}: ${el}`);
 }
-*/
+
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Optional Chanining
 // Normal traditional method 
@@ -615,21 +615,3 @@ console.log([...question.values()]);
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 132181e049e8d66e6ee42ae520c1c11aae7a0f97
