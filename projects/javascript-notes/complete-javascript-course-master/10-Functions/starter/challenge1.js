@@ -47,13 +47,16 @@ const registerNewAnswer = function(){
   console.log(userAns);
   if(userAns <= poll.answers.length){
     poll.answers[userAns]+=1;
-  }else{
+  }else{ 
     Error('Enter a number within the option size');
   }
   
 }
 
-registerNewAnswer();
+
+document.querySelector('.poll').addEventListener('click', registerNewAnswer)
+// registerNewAnswer();
 console.log(poll.answers);
 
-//---------------break-------------------------------------
+
+
