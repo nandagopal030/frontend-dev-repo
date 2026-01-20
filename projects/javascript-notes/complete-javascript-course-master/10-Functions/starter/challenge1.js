@@ -39,11 +39,21 @@ const poll = {
     options: ['0: javascript','1 : python', '2: Rust', '3: c++'],
     answers: new Array(4).fill(0),
 }
-console.log(poll.answers);
-
-
+// poll.answers[0] += 2;
+// console.log(poll.answers);
 
 const registerNewAnswer = function(){
-    prompt(`${poll.question} \n ${poll.options[0]} \n ${poll.options[1]} \n ${poll.options[2]} \n ${poll.options[3]} \n write option number`);
+ const userAns =Number( prompt(`${poll.question} \n ${poll.options[0]} \n ${poll.options[1]} \n ${poll.options[2]} \n ${poll.options[3]} \n (write option number)`));
+  console.log(userAns);
+  if(userAns <= poll.answers.length){
+    poll.answers[userAns]+=1;
+  }else{
+    Error('Enter a number within the option size');
+  }
+  
 }
+
 registerNewAnswer();
+console.log(poll.answers);
+
+//---------------break-------------------------------------
