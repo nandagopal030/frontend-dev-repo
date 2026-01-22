@@ -109,7 +109,7 @@
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+/*
 const lufthansa = {
     airline : 'luftansa',
     iatacode : 'LH',
@@ -223,3 +223,104 @@ const addTaxRate = function(value){
 const addVat2 = addTaxRate(0.23);
 console.log(addVat2(100));
 console.log(addVat2(200));
+
+*/
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------=
+/*
+
+//Immedietly invoke function expressions
+// All the data inside a function like this is private and it is being encapsulated -> making the data to be protected / being private
+// In modern javascript immedietly invoked funciton expression is not being used nowdays
+
+// A normal function expression
+
+const oneCall = function(){
+    console.log('This funciton will work only once');
+}
+oneCall();
+
+// A function expression which can invoke only once
+(function(){
+    console.log('This is an expression function which can invoke only once');
+})();
+
+// An Arrow function which can invoke only once
+(() => console.log("This is an expression with an arrow function this cannot run again"))();
+
+{
+    const isPrivate = 23;
+    var notPrivate = 34;
+}
+// console.log(isPrivate);
+console.log(notPrivate);
+*/
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// CLOSURES
+// A closure makes the functions remember all the variables that existed at the functions birthplace
+
+
+// Because of closure a Variable environment cannot be moved to the garbage colletor where it moved to the Heap
+/*
+const closureFunction = function(){
+    let passengerCount = 0;
+    return function(){
+        passengerCount++;
+        console.log(`${passengerCount} - Passengers`);
+    }
+}
+
+const boiler = closureFunction();
+boiler(); // 1 - passengers
+boiler(); // 2 - passengers
+boiler(); // 3 - passengers
+
+console.dir(boiler); // inside the scopes there will be a closure function where it shows the passenger count variable Environment was being carried with the function 
+*/
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// closure example functions 
+
+
+//Example 1
+let f;
+
+const g = function () {
+    const a = 10;
+    f = function () {
+        console.log(a * 2);
+    }
+}
+const h = function () {
+    const b = 777;
+    f = function () {
+        console.log(b * 2);
+    }
+}
+
+g();
+f();
+console.dir(f);
+//Reassigning f function
+h();
+f()
+console.dir(f);
+
+//Example 2
+// Closure even has priority over the scope chain
+
+const boardingPassengers = function (n, wait) {
+    const pergroup = n / 3;
+    //callback function
+    setTimeout(function () {
+        console.log(`We are now onboarding all the ${n} passengers`);
+        console.log(`There are three group each with ${pergroup} in numbers`)
+    }, wait * 1000);
+    console.log(`Will be OnBoarderd @ ${wait} seconds`);
+}
+// Global variable as the priority
+// const pergroup = 1000;
+boardingPassengers(180, 3);
+
+
