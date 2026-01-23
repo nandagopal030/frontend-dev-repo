@@ -224,8 +224,7 @@ movements.forEach(function (movement, index, array) {
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // ForEach with maps and sets
-
-
+/*
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
@@ -243,3 +242,31 @@ console.log(states);
 states.forEach(function (value, _, set) {
   console.log(`${value} : ${value}`);
 })
+
+*/
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// Working with Arrays 
+
+// Map  method()
+console.log('----------Map Method()--------');
+
+// Modern way of looping to an array and calculating the value
+
+const euroToUsd = 1.1;
+const movementsUsd = movements.map(function (mov) {
+  return mov * euroToUsd;
+});
+// No mutation was being done here
+console.log(movements);
+console.log(movementsUsd);
+
+// Older way of looping through an array 
+const conversionArray = [];
+movements.forEach(function(mov){
+  conversionArray.push(mov * 1.1);
+});
+console.log(conversionArray);
+
+
+
