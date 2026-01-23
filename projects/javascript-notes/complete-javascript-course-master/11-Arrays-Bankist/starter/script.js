@@ -61,6 +61,43 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+
+  containerMovements.innerHTML = '';
+  movements.forEach(function (mov, i) {
+    const type = mov > 1 ? 'deposit' : 'withdrawal';
+    const html = `
+    <div class="movements__row">
+          <div class="movements__type movements__type--${type}">${i + 1}${type}</div>
+          <div class="movements__value">${mov}</div>
+    </div>`
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  }
+  )
+}
+displayMovements(account1.movements);
+// console.log(containerMovements.innerHTML)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -196,13 +233,13 @@ const currencies = new Map([
 ]);
 
 // Maps
-currencies.forEach(function(values, key, map){
+currencies.forEach(function (values, key, map) {
   console.log(`${key} : ${values}`);
 })
 
 // Sets
-const states = new Set(['Tamilnadu', 'Andrapradesh','up', 'Karnataka', 'Tamilnadu', 'Kerla', 'up', 'Mp']);
+const states = new Set(['Tamilnadu', 'Andrapradesh', 'up', 'Karnataka', 'Tamilnadu', 'Kerla', 'up', 'Mp']);
 console.log(states);
-states.forEach(function(value, _, set){
+states.forEach(function (value, _, set) {
   console.log(`${value} : ${value}`);
 })
