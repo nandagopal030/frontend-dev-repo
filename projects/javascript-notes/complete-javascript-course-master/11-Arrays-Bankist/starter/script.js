@@ -62,7 +62,6 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements) {
-
   containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
     const type = mov > 1 ? 'deposit' : 'withdrawal';
@@ -70,33 +69,12 @@ const displayMovements = function (movements) {
     <div class="movements__row">
           <div class="movements__type movements__type--${type}">${i + 1}${type}</div>
           <div class="movements__value">${mov}</div>
-    </div>`
+    </div>`;
     containerMovements.insertAdjacentHTML('afterbegin', html);
-  }
-  )
-}
+  });
+};
 displayMovements(account1.movements);
 // console.log(containerMovements.innerHTML)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -245,28 +223,43 @@ states.forEach(function (value, _, set) {
 
 */
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-// Working with Arrays 
+// Working with Arrays
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // Map  method()
 console.log('----------Map Method()--------');
 
 // Modern way of looping to an array and calculating the value
 
 const euroToUsd = 1.1;
-const movementsUsd = movements.map(function (mov) {
-  return mov * euroToUsd;
-});
+
+// const movementsUsd = movements.map(function (mov) {
+//   return mov * euroToUsd;
+// });
+
+const movementsUsd = movements.map(mov => mov * euroToUsd);
+
 // No mutation was being done here
 console.log(movements);
 console.log(movementsUsd);
 
-// Older way of looping through an array 
+// Older way of looping through an array using forEach and for of
 const conversionArray = [];
-movements.forEach(function(mov){
+movements.forEach(function (mov) {
   conversionArray.push(mov * 1.1);
 });
 console.log(conversionArray);
 
+const movementsForOf = [];
+for (const mov of movements) {
+  movementsForOf.push(mov * 1.5);
+}
+console.log('movementsForOf', movementsForOf);
 
+const movementDescription = movements.map(
+  (mov, i, arr) =>
+    `Movement ${i + 1}: Yout ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`,
+);
+console.log(movementDescription);
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
