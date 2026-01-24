@@ -74,6 +74,17 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+const createUserNames = function (accounts) {
+  const userName = accounts
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  return userName;
+};
+createUserNames('Steven Thomas Williams');
+
 // console.log(containerMovements.innerHTML)
 
 /////////////////////////////////////////////////
