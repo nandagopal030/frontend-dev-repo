@@ -20,7 +20,11 @@ Here are your tasks:
   
   1.2. Based on the input number, update the answers array. For example, if the option is 3, increase the value AT POSITION 3 of the array by 1. Make sure to check if the input is a number and if the number makes sense (e.g answer 52 wouldn't make sense, right?)
 2. Call this method whenever the user clicks the "Answer poll" button.
-3. Create a method 'displayResults' which displays the poll results. The method takes a string as an input (called 'type'), which can be either 'string' or 'array'. If type is 'array', simply display the results array as it is, using console.log(). This should be the default option. If type is 'string', display a string like "Poll results are 13, 2, 4, 1". 
+3. Create a method 'displayResults' which displays the poll results. 
+The method takes a string as an input (called 'type'), which can be either 'string' or 'array'. 
+If type is 'array', simply display the results array as it is, using console.log(). 
+This should be the default option. If type is 'string',
+ display a string like "Poll results are 13, 2, 4, 1". 
 4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call.
 
 HINT: Use many of the tools you learned about in this and the last section 😉
@@ -35,28 +39,29 @@ GOOD LUCK 😀
 
 
 const poll = {
-    question : 'what is your favourate programming language',
-    options: ['0: javascript','1 : python', '2: Rust', '3: c++'],
-    answers: new Array(4).fill(0),
-}
-// poll.answers[0] += 2;
-// console.log(poll.answers);
-
-const registerNewAnswer = function(){
- const userAns =Number( prompt(`${poll.question} \n ${poll.options[0]} \n ${poll.options[1]} \n ${poll.options[2]} \n ${poll.options[3]} \n (write option number)`));
-  console.log(userAns);
-  if(userAns <= poll.answers.length){
-    poll.answers[userAns]+=1;
-  }else{ 
-    Error('Enter a number within the option size');
+  question: 'what is your favourate programming language',
+  options: ['0: javascript', '1 : python', '2: Rust', '3: c++'],
+  answers: new Array(4).fill(0),
+  displayResults(type) {
+    if (type.length === this.answers.length) {
+      console.log(this.answers);
+    } else {
+      return type;
+    }
   }
-  
+}
+
+let updatedAns = poll.options;
+console.log('updatedAns', updatedAns);
+console.log(typeof updatedAns);
+const registerNewAnswer = function () {
+  const userAns = Number(prompt(`${poll.question} \n ${poll.options[0]} \n ${poll.options[1]} \n ${poll.options[2]} \n ${poll.options[3]} \n (write option number)`));
+  poll.answers[userAns]++;
 }
 
 
-document.querySelector('.poll').addEventListener('click', registerNewAnswer)
-// registerNewAnswer();
-console.log(poll.answers);
+document.querySelector('.poll').addEventListener('click', function () {
+  registerNewAnswer();
+  poll.displayResults(updatedAns);
 
-
-
+})
