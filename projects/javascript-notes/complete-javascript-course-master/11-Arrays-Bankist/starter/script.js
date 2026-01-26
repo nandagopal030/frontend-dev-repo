@@ -68,24 +68,69 @@ const displayMovements = function (movements) {
     const html = `
     <div class="movements__row">
           <div class="movements__type movements__type--${type}">${i + 1}${type}</div>
-          <div class="movements__value">${mov}</div>
+          <div class="movements__value">${mov}€</div>
     </div>`;
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
 displayMovements(account1.movements);
 
-const createUserNames = function (accounts) {
-  const userName = accounts
-    .toLowerCase()
-    .split(' ')
-    .map(name => name[0])
-    .join('');
-  return userName;
+const calPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = `${balance} eur`;
 };
-createUserNames('Steven Thomas Williams');
+calPrintBalance(account1.movements);
 
-// console.log(containerMovements.innerHTML)
+const createUserNames = function (accounts) {
+  accounts.forEach(function (acc) {
+    acc.userName = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+createUserNames(accounts);
+//Chaining methods
+const calcDisplaySummary = function (movements) {
+  //IN
+  const incomes = movements
+    .filter(mov => mov > 1)
+    .reduce((acc, cur) => acc + cur, 0);
+  labelSumIn.textContent = `${incomes}€`;
+  //Out
+  const outcomes = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, cur) => acc + cur, 0);
+  labelSumOut.textContent = `${Math.abs(outcomes)}€`;
+  //Interest 1.2% for the deposited amount
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+calcDisplaySummary(account1.movements);
+
+//Event handler
+let currentAccount;
+btnLogin.addEventListener('click', function (e) {
+  // preventing form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.userName === inputLoginUsername.value,
+  );
+  console.log(currentAccount);
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log('Login');
+  }
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -235,9 +280,9 @@ states.forEach(function (value, _, set) {
 */
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 // Working with Arrays
-
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-// Map  method()
+// Map  method() -> main usuage is like sum of adding the array elements
 console.log('----------Map Method()--------');
 
 // Modern way of looping to an array and calculating the value
@@ -272,5 +317,98 @@ const movementDescription = movements.map(
     `Movement ${i + 1}: Yout ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`,
 );
 console.log(movementDescription);
-
+*/
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Wroking with filters -> main usage of filters is also to return some spicified value in an array using any condition
+/* 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const deposits = movements.filter(function (mov) {
+  return mov > 0; //this will directly return true or false;
+});
+console.log(movements);
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+const withdrawls = movements.filter(function (mov) {
+  return mov < 0;
+});
+console.log(withdrawls);
+
+const withdrawls2 = movements.filter(mov => mov < 0);
+console.log(withdrawls2);
+
+*/
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+// The Reduce Method -> is mainly used for boiling down the array into one single value that could be anything
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// accumulator -> snowball
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  console.log(`accumulator + current = ', ${acc} + ${cur}`);
+  return acc + cur;
+}, 0); // 0 is the iteration starting point
+console.log(balance);
+
+// Arrow function
+const balance3 = movements.reduce((acc, cur) => acc + cur, 0);
+console.log('balance3', balance3);
+
+//old school
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+//Maximum value
+const max = movements.reduce((acc, mov) => {
+  console.log(`acc - ${acc},  mov - ${mov}`);
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(max);
+*/
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+//Method Chaining
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const euroToUsd = 1.1;
+console.log(movements);
+
+//chaining methods can make the performance issues so make the chain lesser
+// It is a bad practice in js
+const totalDeposites = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    console.log(i, mov);
+    return mov * euroToUsd;
+  })
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDeposites);
+*/
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+/*
+// Find method
+
+// Find method is bit similar to Filter method
+// filter returns all the elements (Array) match the condiotion where find returns the first element
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const firstWithdrawel = movements.find(ele => ele <= 0);
+console.log(firstWithdrawel);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
+*/
+//--------------------------------------------------------------------------------------------------------------------------------------------------------
