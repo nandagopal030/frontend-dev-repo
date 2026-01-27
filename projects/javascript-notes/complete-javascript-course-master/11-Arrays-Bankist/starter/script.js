@@ -76,9 +76,10 @@ const displayMovements = function (movements) {
 };
 
 //balance
-const calPrintBalance = function (movements) {
-  const balance = movements.reduce((acc, cur) => acc + cur, 0);
-  labelBalance.textContent = `${balance} eur`;
+const calPrintBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+
+  labelBalance.textContent = `${acc.balance} eur`;
 };
 
 
@@ -106,7 +107,7 @@ const calcDisplaySummary = function (acc) {
     .reduce((acc, cur) => acc + cur, 0);
   labelSumOut.textContent = `${Math.abs(outcomes)}€`;
   //Interest 1.2% for the deposited amount
-  const interest =acc.movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
     .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
@@ -115,6 +116,19 @@ const calcDisplaySummary = function (acc) {
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
+
+//Updating UI
+function updateUI(acc) {
+  //Display moments 
+  displayMovements(acc.movements);
+
+  //Display Balance 
+  calPrintBalance(acc);
+
+  //Display Summary
+  calcDisplaySummary(acc);
+
+}
 
 
 //Event handler main event login
@@ -128,26 +142,54 @@ btnLogin.addEventListener('click', function (e) {
   );
   console.log(currentAccount);
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-  //Display UI and message
+    //Display UI and message
     labelWelcome.textContent = `Welcome Back  ${currentAccount.owner.split(' ')[0]}`
+    containerApp.style.opacity = 100;
+    updateUI(currentAccount);
   }
-  containerApp.style.opacity = 100;
 
   //Clear userName
   inputLoginUsername.value = inputLoginPin.value = '';
   inputClosePin.blur();
-  
-  //Display moments 
-  displayMovements(currentAccount.movements);
-
-  //Display Balance 
-  calPrintBalance(currentAccount.movements);
-
-  //Display Summary
-  calcDisplaySummary(currentAccount);
 
 });
 
+// Transfer amount section 
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAct = accounts.find((acc) => acc.userName === inputTransferTo.value);
+
+  inputTransferAmount.value = inputTransferTo.value = '';
+  if (amount > 0 &&
+    currentAccount.balance >= amount &&
+    receiverAct &&
+    receiverAct?.userName !== currentAccount.userName) {
+    currentAccount.movements.push(-amount);
+    receiverAct.movements.push(amount);
+
+    updateUI(currentAccount);
+  }
+
+})
+
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (inputCloseUsername.value === currentAccount.userName &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(acc =>
+      acc.userName === currentAccount.userName);
+    console.log(index);
+    //Delete Account
+    accounts.splice(index, 1);
+    // Hide UI
+    containerApp.style.opacity = 0;
+  }
+
+  inputCloseUsername.value = inputClosePin.value = '';
+})
 
 
 /////////////////////////////////////////////////
@@ -192,7 +234,7 @@ console.log(arr.splice(1, 3)); // The 3 defines the delete syntax and this line 
 console.log(arr);
 
 
-//REVERSE() -> used to reverse an array 
+//REVERSE() -> used to reverse an array
 console.log('----------------------Reverse Method()- -----------');
 arr = ['a', 'b', 'c', 'd', 'e'];
 let arr2 = ['k', 'g', 't', 'h', 't'];
@@ -220,7 +262,7 @@ console.log(typeof arr2 ); // Now this becomes an object 😒
 //The New at Method
 const arr = [29 , 36 , 53];
 //traditional method
-console.log(arr[2]); 
+console.log(arr[2]);
 //new es6 modern method using at method
 console.log(arr.at(0));
 
@@ -256,8 +298,8 @@ for (const [i, movement] of movements.entries()) {
 console.log('-----------ForEach () Loop -------------------');
 
 
-// The syntax for the forEach Loop is always matters 
-// where the callback function need to have the (element, index, array ) in this order and the 
+// The syntax for the forEach Loop is always matters
+// where the callback function need to have the (element, index, array ) in this order and the
 // Name of the order does'nt matter.
 
 // The continue and the break statement cannot break the forEach() loop
@@ -339,7 +381,7 @@ console.log(movementDescription);
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Wroking with filters -> main usage of filters is also to return some spicified value in an array using any condition
-/* 
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const deposits = movements.filter(function (mov) {
@@ -430,3 +472,16 @@ console.log(account);
 
 */
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// FindLast and FindlastIndex method();
+//The findLast will start looping from last index of the array and returns a value
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+
+const last = movements.findLast(arr => arr < 0);
+console.log(last);
+
+const largestLargeMomentIndex = movements.findLastIndex(mov => Math.abs(mov) > 2000);
+console.log(largestLargeMomentIndex);
+console.log(`your latest movement is ${movements.length - largestLargeMomentIndex} movements ago`);
