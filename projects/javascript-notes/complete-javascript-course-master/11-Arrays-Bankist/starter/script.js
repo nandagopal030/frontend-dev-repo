@@ -61,6 +61,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+//movements
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
@@ -73,13 +74,13 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
 
+//balance
 const calPrintBalance = function (movements) {
   const balance = movements.reduce((acc, cur) => acc + cur, 0);
   labelBalance.textContent = `${balance} eur`;
 };
-calPrintBalance(account1.movements);
+
 
 const createUserNames = function (accounts) {
   accounts.forEach(function (acc) {
@@ -91,33 +92,32 @@ const createUserNames = function (accounts) {
   });
 };
 createUserNames(accounts);
-//Chaining methods
-const calcDisplaySummary = function (movements) {
+
+//Chaining methods display the summary
+const calcDisplaySummary = function (acc) {
   //IN
-  const incomes = movements
+  const incomes = acc.movements
     .filter(mov => mov > 1)
     .reduce((acc, cur) => acc + cur, 0);
   labelSumIn.textContent = `${incomes}€`;
   //Out
-  const outcomes = movements
+  const outcomes = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, cur) => acc + cur, 0);
   labelSumOut.textContent = `${Math.abs(outcomes)}€`;
   //Interest 1.2% for the deposited amount
-  const interest = movements
+  const interest =acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
 
-calcDisplaySummary(account1.movements);
 
-//Event handler
+//Event handler main event login
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
   // preventing form from submitting
@@ -128,9 +128,27 @@ btnLogin.addEventListener('click', function (e) {
   );
   console.log(currentAccount);
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    console.log('Login');
+  //Display UI and message
+    labelWelcome.textContent = `Welcome Back  ${currentAccount.owner.split(' ')[0]}`
   }
+  containerApp.style.opacity = 100;
+
+  //Clear userName
+  inputLoginUsername.value = inputLoginPin.value = '';
+  inputClosePin.blur();
+  
+  //Display moments 
+  displayMovements(currentAccount.movements);
+
+  //Display Balance 
+  calPrintBalance(currentAccount.movements);
+
+  //Display Summary
+  calcDisplaySummary(currentAccount);
+
 });
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
