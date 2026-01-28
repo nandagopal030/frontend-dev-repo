@@ -167,11 +167,20 @@ btnTransfer.addEventListener('click', function (e) {
     receiverAct?.userName !== currentAccount.userName) {
     currentAccount.movements.push(-amount);
     receiverAct.movements.push(amount);
-
     updateUI(currentAccount);
   }
 
 })
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = inputLoanAmount.value;
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    currentAccount.movements.push(amount);
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
 
 
 btnClose.addEventListener('click', function (e) {
@@ -472,7 +481,7 @@ console.log(account);
 
 */
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
-
+/*
 // FindLast and FindlastIndex method();
 //The findLast will start looping from last index of the array and returns a value
 
@@ -485,3 +494,67 @@ console.log(last);
 const largestLargeMomentIndex = movements.findLastIndex(mov => Math.abs(mov) > 2000);
 console.log(largestLargeMomentIndex);
 console.log(`your latest movement is ${movements.length - largestLargeMomentIndex} movements ago`);
+
+*/
+//----------------------------------------------------------------------------------------------------------------------------------
+/*
+// some and every methods
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+
+// some
+console.log(movements);
+// Finds the Equality
+console.log(movements.includes(-130));
+
+// Finds the Condition
+console.log(movements.some(mov => mov > 20000))
+
+
+// Every
+// The every returns true if all the elements satisfy the condition
+
+console.log(account4);
+console.log(account4.movements.every(mov => mov >0)); // checkes every movements and checks it is all positive and it returns true;
+
+// Seperate callback
+
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.some(deposit));
+console.log(movements.some(deposit));
+console.log(movements.some(deposit));
+
+*/
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+// flat and flatmap
+
+// the flat method combines the nested flat array into a single one
+const arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+console.log(arr.flat());
+
+const arrDeep = [[1,2,[3,4], [5,6,7]],[8,9]];
+console.log(arrDeep.flat(2)); // (2) denotes go indepth of 2 levels
+
+const accountMovements = accounts.map(acc => acc.movements);
+const allMovements = accountMovements.flat()
+console.log(accountMovements);
+console.log(allMovements)
+
+const overallBalance = allMovements.reduce((acc, curr) => acc + curr, 0);
+console.log(overallBalance);
+
+//chaining ;;
+const overallBalance2 =  accounts.map(acc => acc.movements)
+                                .flat()
+                                .reduce((acc, curr) => acc + curr, 0);
+console.log(overallBalance2);
+
+// flatMap()
+// flatMap() cannot go further one level deep like flat so use it according to the situation
+const overallBalance3 =  accounts.flatMap(acc => acc.movements)
+                                .reduce((acc, curr) => acc + curr, 0);
+console.log(overallBalance3);
+
+*/
