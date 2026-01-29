@@ -62,9 +62,11 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 //movements
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+  
+  movs.forEach(function (mov, i) {
     const type = mov > 1 ? 'deposit' : 'withdrawal';
     const html = `
     <div class="movements__row">
@@ -199,6 +201,14 @@ btnClose.addEventListener('click', function (e) {
 
   inputCloseUsername.value = inputClosePin.value = '';
 })
+let sorted = false;
+btnSort.addEventListener('click', function(e){
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+  console.log(sorted)
+})
+
 
 
 /////////////////////////////////////////////////
@@ -558,3 +568,46 @@ const overallBalance3 =  accounts.flatMap(acc => acc.movements)
 console.log(overallBalance3);
 
 */
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+// Sorting Arrays
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// Strings;
+const names = ['madan', 'adam', 'kandhan', 'lurugan'];
+console.log(names.sort());
+
+// Numbers;
+console.log(movements);
+
+// This will be converted into the strings and then sorted as a string method
+console.log(movements);
+
+//Ascending
+// movements.sort((a,b)=>{
+//   if(a > b)
+//     return 1;
+//   if(a < b)
+//     return -1;
+// });
+// console.log(movements);
+
+// movements.sort((a,b) => a - b);
+// console.log(movements);
+
+// //Decending
+// movements.sort((a,b)=>{
+//   if(a < b)
+//     return 1;
+//   if(a > b)
+//     return -1;
+// });
+// console.log(movements);
+
+
+movements.sort((a,b) => b - a);
+console.log(movements);
+
+*/
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
