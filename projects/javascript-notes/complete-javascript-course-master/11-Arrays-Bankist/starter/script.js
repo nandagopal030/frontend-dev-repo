@@ -1,5 +1,7 @@
 'use strict';
 
+// 30 different Array methods 
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
@@ -10,13 +12,15 @@ const account1 = {
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
+  type: 'premium'
 };
 
 const account2 = {
   owner: 'Jessica Davis',
-  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  movements: [333, 444, 11, 2, -11, -203, 102, 402, 12],
   interestRate: 1.5,
   pin: 2222,
+  type: 'basic'
 };
 
 const account3 = {
@@ -24,6 +28,7 @@ const account3 = {
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
   pin: 3333,
+  type: 'Standard'
 };
 
 const account4 = {
@@ -31,6 +36,7 @@ const account4 = {
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
+  type: 'premium'
 };
 
 const accounts = [account1, account2, account3, account4];
@@ -65,7 +71,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const displayMovements = function (movements, sort = false) {
   const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
   containerMovements.innerHTML = '';
-  
+
   movs.forEach(function (mov, i) {
     const type = mov > 1 ? 'deposit' : 'withdrawal';
     const html = `
@@ -202,7 +208,7 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
 })
 let sorted = false;
-btnSort.addEventListener('click', function(e){
+btnSort.addEventListener('click', function (e) {
   e.preventDefault();
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
@@ -611,3 +617,90 @@ console.log(movements);
 
 */
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/*
+// groupBy() in js method main purpose is it returns an object Array
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const groupMovements = Object.groupBy(movements,
+  movement => movement > 0 ? 'deposits' : 'Withdrawal'
+);
+console.log(groupMovements);
+
+// Implementing in accounts
+const groupAccounts = Object.groupBy(accounts,
+  account => {
+    const movement = account.movements.length;
+    if (movement >= 8) return 'Very Active';
+    if (movement >= 4) return 'active';
+    if (movement >= 1) return 'moderate';
+    return 'In active'
+  }
+);
+console.log(groupAccounts);
+
+const groupByTypes = Object.groupBy(accounts,
+  account => account.type
+);
+console.log(groupByTypes);
+
+*/
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+// More ways to create and filling Arrays
+
+const a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log([1, 2, 3, 4, 5, 6, 7]);
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+const x = new Array(7);
+console.log(x);
+console.log(x.map(() => 5));
+
+console.log(x.fill(1, 2, 5));
+console.log(a.fill(24, 2, 7));
+
+//Array.from
+const apple = Array.from({ length: 5 }, () => 1);
+console.log(apple);
+
+const banana = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(banana);
+
+// creating 100 dice rolls
+
+const diceRolls = Array.from({ length: 100 }, (curr, i) => {
+  curr = Math.trunc(Math.random() * 100);
+  return curr;
+});
+console.log(diceRolls);
+
+labelBalance.addEventListener('click', function () {
+  const momentsUi = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => el.textContent.replace('€', '')
+  )
+  console.log(momentsUi);
+});
+
+*/
+//-----------------------------------------------------------------------------------------------------------------
+
+//175. Non-Destructive Alternatives: toReversed, toSorted, toSpliced, with
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+//Instead of reverse() - toReversed();
+console.log(movements);
+const reverseMov = movements.slice().reverse(); // This makes a copy
+const reverseMov2 = movements.toReversed(); // This makes a copy
+console.log(reverseMov);
+console.log(movements);
+
+// sort() - toSorted()
+// splice() - toSplice()
+
+const newMovements = movements.with(1,2000);
+console.log(newMovements); // copy was being updated
+console.log(movements);
+
+//-------------------------------------------------------------------------------------------------------------------------------
