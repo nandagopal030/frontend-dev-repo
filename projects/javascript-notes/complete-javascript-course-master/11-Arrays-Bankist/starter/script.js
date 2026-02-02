@@ -685,7 +685,7 @@ labelBalance.addEventListener('click', function () {
 
 */
 //-----------------------------------------------------------------------------------------------------------------
-
+/*
 //175. Non-Destructive Alternatives: toReversed, toSorted, toSpliced, with
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -702,5 +702,54 @@ console.log(movements);
 const newMovements = movements.with(1,2000);
 console.log(newMovements); // copy was being updated
 console.log(movements);
-
+*/
 //-------------------------------------------------------------------------------------------------------------------------------
+//177. Array Methods Practice
+
+//1
+const bankDepositSum = accounts.flatMap(acc => acc.movements)
+  .filter(red => red > 1)
+  .reduce((acc, curr) => acc + curr);
+
+console.log(bankDepositSum);
+
+//2
+// const bankDeposit1000 = accounts.flatMap(acc => acc.movements)     
+//                                 .filter(mov  => mov > 1000).length
+// console.log(bankDeposit1000);
+
+const bankDeposit1000 = accounts.flatMap(acc => acc.movements)
+  .reduce((count, curr) => (curr > 1000 ? ++count : count), 0);
+console.log(bankDeposit1000);
+
+// Reference prefix counter;;
+let a = 10;
+console.log(++a);
+
+//3
+// const sums = accounts.flatMap(mov => mov.movements)
+//   .reduce((sum, curr) => { curr > 0 ? sum.deposit += curr : sum.withdrawls += curr },
+//     { deposit: 0, withdrawls: 0 });
+const { deposit, withdrawal } = accounts.flatMap((acc => acc.movements))
+  .reduce((sums, curr) => {
+    // curr > 0 ? sums.deposit += curr : sums.withdrawal += curr
+    // return sums;
+    sums[curr > 0 ? 'deposit' : 'withdrawal'] += curr;
+    return sums;
+  },
+    { deposit: 0, withdrawal: 0 }
+  );
+console.log('deposit : ', deposit, 'withdrawal : ', withdrawal);
+
+//4
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+  const exceptions = ['a', 'at', 'the', 'an', 'and', 'but', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title.toLowerCase().split(' ').map(word => exceptions.includes(word) ? word :
+    capitalize(word)).join(' ');
+  return capitalize(titleCase);
+};
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not TOO Long'));
+console.log(convertTitleCase('and here is another title but with an EXAMPLE'));
