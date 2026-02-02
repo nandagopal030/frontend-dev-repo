@@ -91,9 +91,8 @@ const displayMovements = function (movements, sort = false) {
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+        <div class="movements__type movements__type--${type}">${i + 1
+      } ${type}</div>
         <div class="movements__value">${mov}€</div>
       </div>
     `;
@@ -166,9 +165,8 @@ btnLogin.addEventListener('click', function (e) {
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]
+      }`;
     containerApp.style.opacity = 100;
 
     // Clear input fields
@@ -251,3 +249,47 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+//-----------------------------------------------------------------------------------------------------------------
+//converting and checking numbers
+
+// This is an issue in javascript
+console.log(0.1 + 0.2 == 0.3);
+
+//conversion
+console.log(Number('22'));
+console.log(+'22'); // The + plus Symbol makes the number cohertion 
+
+console.log('-------------------parseInt---------------------------------------');
+//Parsing
+console.log(Number.parseInt('22px', 10));
+console.log(Number.parseInt('w2px', 10));
+console.log(Number.parseInt('2.3'));
+console.log(Number.parseFloat('2.3'));
+
+console.log('-------------------isNaN---------------------------------------');
+// isNAN
+// Check if the value is not a number
+console.log(Number.isNaN(20));
+console.log(Number.isNaN('20'));
+console.log(Number.isNaN(+'20x'));
+console.log(Number.isNaN(23 / 0)); // Infinity
+
+console.log('----------------------isFinite()--------------------------------');
+//isFinite
+// Check if the value is a number
+console.log(Number.isFinite(20));
+console.log(Number.isFinite('20'));
+console.log(Number.isFinite(+'30x'));
+console.log(Number.isFinite(23/ 0));
+
+console.log('----------------------isInteger()---------------------------------');
+//isInteger
+// check if the value is a Integer
+console.log(Number.isInteger(20));
+console.log(Number.isInteger('20'));
+console.log(Number.isInteger(+'90x'));
+console.log(Number.isInteger(20/0));
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------
+// MAth and Rounding
