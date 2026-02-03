@@ -336,6 +336,7 @@ console.log((2.332131).toFixed(5));
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
 //Remainder Operator
+/*
 console.log(8 % 2);
 console.log(8 / 2);
 
@@ -355,6 +356,79 @@ labelBalance.addEventListener('click', function(){
   });
   console.log('clickerd');
 });
-
+*/
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
+// Numeric separaters
+// underscores gives certain meaning for thousands
+/*
+const diameter = 239_430_000_000;
+console.log(diameter);
 
+const priceInCents = 243_90;
+console.log(priceInCents);
+
+const transferFee1 = 19_1;
+const transferFee2 = 122_100;
+
+console.log(Number('2030_01')); //NAN it cannot be converted into a number function
+console.log(parseInt('230_00'));
+*/
+//000000000000---------------------------------------------------------------------------------------------------------------------------------------------------
+// working with BigInt
+/*
+console.log(2 ** 53 - 1);
+console.log(2 ** 53 - 0);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 - 1);
+
+console.log(2898238983289982398239844313);
+console.log(8329898328932189238998239889n);
+console.log(BigInt(39090230139002320332910323));
+
+// Operations
+console.log(10000n + 100000n);
+const huge = 94290902392099329032932901n;
+const bit = 491939
+console.log(huge * BigInt(bit));
+
+console.log(20n > 19);
+console.log(20n === 20);
+console.log(20 == 20n);
+console.log('20n' == 20);;
+
+console.log(11n / 3n);
+console.log(11 / 3);
+*/
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+// Creating Dates and times
+/*
+const now = new Date();
+console.log(now);
+console.log(new Date('ue Feb 03 2026 12:17:39 GMT+0530 '));
+
+console.log(accounts);
+console.log(new Date(2049 , 10, 2, 3, 19, 11));
+console.log(new Date (2033, 11, 32, 42, 12, 33));
+
+console.log(new Date(0));
+console.log(new Date(2037 * 24 * 60 * 60 * 20));
+*/
+//working with Dates
+const future = new Date(2037, 10, 19, 15, 24);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString()); // format of international standard 
+console.log(future.getTime());
+console.log(new Date(2142237240000));
+
+console.log(Date.now());
+
+future.setFullYear(2992);
+console.log(future);
