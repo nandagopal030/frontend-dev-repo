@@ -103,7 +103,7 @@ const displayMovements = function (movements, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 const calcDisplaySummary = function (acc) {
@@ -115,7 +115,7 @@ const calcDisplaySummary = function (acc) {
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -125,7 +125,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const createUsernames = function (accs) {
@@ -204,7 +204,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
@@ -252,7 +252,7 @@ btnSort.addEventListener('click', function (e) {
 
 //-----------------------------------------------------------------------------------------------------------------
 //converting and checking numbers
-
+/*
 // This is an issue in javascript
 console.log(0.1 + 0.2 == 0.3);
 
@@ -281,7 +281,7 @@ console.log('----------------------isFinite()--------------------------------');
 console.log(Number.isFinite(20));
 console.log(Number.isFinite('20'));
 console.log(Number.isFinite(+'30x'));
-console.log(Number.isFinite(23/ 0));
+console.log(Number.isFinite(23 / 0));
 
 console.log('----------------------isInteger()---------------------------------');
 //isInteger
@@ -289,7 +289,72 @@ console.log('----------------------isInteger()---------------------------------'
 console.log(Number.isInteger(20));
 console.log(Number.isInteger('20'));
 console.log(Number.isInteger(+'90x'));
-console.log(Number.isInteger(20/0));
+console.log(Number.isInteger(20 / 0));
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
 // MAth and Rounding
+console.log('------------------------------sqrt()------------------------------------------')
+console.log(Math.sqrt(25))
+console.log(25 ** (1 / 2));
+console.log(8 ** (1 / 3));
+
+console.log(Math.max(22, 3, 52, 4, 6, 76, 73, 90));
+console.log(Math.max(2, 3, 4, 5, 5, 23, '44px', 90));
+
+console.log(Math.min(2, 3, 4, 12, 1));
+console.log(Math.PI * Number.parseFloat('10px') ** 2);
+
+console.log(Math.trunc(Math.random() * 6) + 1);
+
+const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+console.log(randInt(10, 20));
+console.log(randInt(0, 3));
+
+// Rounding Integers    all of this work do the type conversion as well
+console.log(Math.trunc(23.9));
+console.log(Math.trunc(23.4));
+
+console.log(Math.round(25.3));
+console.log(Math.round(25.9));
+
+console.log(Math.ceil(23.3));
+console.log(Math.ceil(23.8));
+
+console.log(Math.floor(23.3));
+console.log(Math.floor(23.3));
+
+console.log('-----0------------comparison of floor() and trunc() -----------------');
+console.log(Math.trunc(-23.3));
+console.log(Math.floor(-23.3));  // during the negative number it works the opposite
+
+// Rounding decimals
+console.log((2.3).toFixed(0));
+console.log((2.3).toFixed(3));
+console.log((2.332131).toFixed(5));
+*/
+
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//Remainder Operator
+console.log(8 % 2);
+console.log(8 / 2);
+
+console.log(7 / 2);
+console.log(7 % 2);
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(22));
+console.log(isEven(7));
+console.log(isEven(2320));
+
+
+labelBalance.addEventListener('click', function(){
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    if(i % 2 === 0) row.style.backgroundColor = 'orange';
+    if(i % 3 === 0) row.style.backgroundColor = 'blue';
+  });
+  console.log('clickerd');
+});
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
