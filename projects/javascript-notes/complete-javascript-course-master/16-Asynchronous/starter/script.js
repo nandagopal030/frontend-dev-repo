@@ -162,7 +162,7 @@ setTimeout(() => {
 //             countriesContainer.style.opacity = 1;
 //         })
 // }
-
+/*
 const getJSON = function (url, errorMsg = '') {
     return fetch(url).then((response) => {
         if (!response.ok)
@@ -178,7 +178,7 @@ const getCountryDate = function (country) {
         .then(data => {
             renderData(data[0])
             const neighbour = data[0].borders?.[0];
-            if(!neighbour) throw new Error('No Neighbour Found')
+            if (!neighbour) throw new Error('No Neighbour')
             return getJSON(`https://restcountries.com/v2/alpha/${neighbour}`,
                 'Country not found'
             );
@@ -194,44 +194,129 @@ const getCountryDate = function (country) {
         })
 }
 
-
+*/
+/*
 const btn = document.querySelector('.btn-country');
 
 btn.addEventListener('click', function () {
     getCountryDate('portugal');
 })
+*/
+// getCountryDate('australia');
+/*
+console.log('Test Start');
+setTimeout(() => console.log('seted time After 0 secs'), 500);
+Promise.resolve('resolved Promise 1').then((res) =>
+    console.log(res));
+Promise.resolve('Resolved promise 2').then(res => {
+    for (let i = 0; i < 100000000; i++) { }
+    console.log(res);
+})
+console.log('Test End');
+*/
+/*
+const lotteryTicket = new Promise(function (resolve, reject) {
+    console.log('Lottery Draw was being happening 🔮🔮')
+    setTimeout(function () {
+        if (Math.random() >= 0.5) {
+            resolve('You won the lottery Ticket 🎶👍😍👌');
+        } else {
+            reject(new Error('You lost the lottery ticket'));
+        }
+    }, 2000)
 
-getCountryDate('australia');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+})
+lotteryTicket.then((res) => console.log(res)).catch
+    ((err) => console.error(err));
 
 
 
+const wait = function (seconds) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, seconds * 1000);
+    })
+}
+wait(2).then(() => {
+    console.log('1 second passed');
+    return wait(1);
+}).then(() => {
+    console.log('2 second passed');
+    return wait(2);
+}).then(() => {
+    console.log('3 second passed');
+    return wait(3);
+}).then(() => {
+    console.log('4 second passed');
+    return wait(4);
+}).then(() => {
+    console.log('5 second passed');
+    return wait(5);
+})
+
+
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('abc')).then(x => console.error(x));
+
+// setTimeout(() => {
+// console.log('1 second passed');
+// setTimeout(() => {
+//     console.log('2 second passed')
+//     setTimeout(() => {
+//         console.log('3 second passed')
+//         setTimeout(() => {
+//             console.log('4 second passed')
+//         }, 1000)
+//     }, 1000)
+// }, 1000)
+// }, 1000)
+
+*/
+
+
+
+const getPosition = function () {
+    return new Promise(function (resolve, reject) {
+        // navigator.geolocation.getCurrentPosition(
+        //     position => console.log(position)
+        //     , error => console.log(error));
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    })
+}
+
+// getPosition().then(pos => console.log(pos));
+
+
+
+const whereAmI = function () {
+
+    getPosition().then(
+        pos => {
+            const { latitude:lat,  longitude:lng } = pos.coords;
+            return fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`)
+        })
+        .then(response => {
+            if (!response.ok) throw new Error(`Problem with geoCoding ${response.status}`)
+            console.log(response);
+            return response.json()
+        })
+        .then(data => {
+            console.log(data);
+            console.log(`You are in ${data.city}, ${data.countryCode}`)
+            return fetch(`https://restcountries.com/v2/name/${data.countryName}/`);
+        })
+        .then(res => {
+            if (!res.ok) throw new Error(`country Not found ${res.status}`);
+            return res.json();
+        })
+        .then(data => renderData(data[0]))
+        .catch(err => console.error(`${err.message} 😢❤️`))
+
+}
+whereAmI(52.508, 13.381);
+
+
+const btn = document.querySelector('.btn-country');
+btn.addEventListener('click', whereAmI)
 
 
 
@@ -242,7 +327,12 @@ getCountryDate('australia');
 
 
 
-//Lecture
+
+
+
+
+
+//Lecture (Theory)
 // Asyncronous programming 
 /*
 Asyncronous programming is all about co-ordinationg the behaviour of the program for the certain amount of time
